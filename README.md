@@ -1,5 +1,7 @@
 # tic-tac-toe-sami
 
+[![Build Status](https://travis-ci.org/mnsami/tic-tac-toe.svg?branch=master)](https://travis-ci.org/mnsami/tic-tac-toe)
+
 ### Description
 
 A php-cli Tic-Tac-Toe simple two players game.
