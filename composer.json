@@ -1,0 +1,23 @@
+{
+    "name": "msami/tic-tac-toe",
+    "description": "Tic-Tac-Toe php-cli game",
+    "license": "MIT",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Mina Nabil Sami"
+        }
+    ],
+    "require": {
+        "php": ">=7",
+        "squizlabs/php_codesniffer": "2.*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "6.1.*"
+    },
+    "autoload": {
+        "psr-0": {
+            "TicTacToe": "src/"
+        }
+    }
+}
