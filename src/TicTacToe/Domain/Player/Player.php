@@ -44,4 +44,9 @@ final class Player
     {
         return (string) $this->name;
     }
+
+    public function token(): string
+    {
+        return (string) $this->gameToken;
+    }
 }
