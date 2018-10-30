@@ -1,10 +1,10 @@
-CMD = docker-compose exec php
 COMPOSER ?= composer
 PROJECT = "TicTacToe."
-ENV = $(RUNNER)
 
-ifeq ($(ENV),"travis")
-	CMD = ""
+ifeq ($(RUNNER), travis)
+	CMD :=
+else
+	CMD := docker-compose exec php
 endif
 
 all: clear lint-composer lint-php composer phpcs play
@@ -37,6 +37,7 @@ coverage:
 	$(CMD) bin/phpunit --coverage-html coverage
 
 tests:
+	@echo "\n==> Running tests .. $(RUNNER)"
 	$(CMD) bin/phpunit
 
 
