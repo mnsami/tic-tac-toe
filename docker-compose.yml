@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+  php:
+    image: custom-php-cli
+    container_name: tictactoe
+    build: docker/php-cli
+    tty: true
+    volumes:
+    - ./:/code

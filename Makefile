@@ -1,32 +1,37 @@
+CMD = docker-compose exec php
 COMPOSER ?= composer
-PROJECT = "Tic-Tac-Toe"
+PROJECT = "TicTacToe."
 
-all: clear lint-composer lint-php composer phpcs test coverage
+all: clear lint-composer lint-php composer phpcs play
 
 lint-composer:
 	@echo "\n==> Validating composer.json and composer.lock:"
-	$(COMPOSER) validate --strict
+	$(CMD) $(COMPOSER) validate --strict
 
 lint-php:
 	@echo "\n==> Validating all php files:"
 	@find src -type f -name \*.php | while read file; do php -l "$$file" || exit 1; done
 
 composer:
-	$(COMPOSER) install
+	$(CMD) $(COMPOSER) install
 
 clear:
-	rm -rf vendor
+	$(CMD) rm -rf vendor
 
 phpcs:
-	php vendor/bin/phpcs . -np
+	$(CMD) bin/phpcs --standard=phpcs.xml -p
 
 phpcbf:
-	vendor/bin/phpcbf src/*
+	$(CMD) bin/phpcbf
 
-test:
-	vendor/bin/phpunit
+play:
+	$(CMD) bin/App.php
 
 coverage:
-	vendor/bin/phpunit --coverage-html coverage
+	$(CMD) bin/phpunit --coverage-html coverage
 
-.PHONY: lint-php lint-composer phpcs phpcbf test coverage composer clear
+tests:
+	$(CMD) bin/phpunit
+
+
+.PHONY: lint-php lint-composer phpcs phpcbf composer clear play tests coverage

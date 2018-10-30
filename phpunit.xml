@@ -3,6 +3,7 @@
     <testsuites>
         <testsuite name="TicTacToe Test Suite">
             <directory suffix="Test.php">./src/TicTacToe/Test/</directory>
+            <directory suffix="Test.php">./tests/</directory>
         </testsuite>
     </testsuites>
     <filter>
@@ -10,10 +11,8 @@
             <directory suffix=".php">./src/TicTacToe/</directory>
             <exclude>
                 <directory>./src/TicTacToe/Test/</directory>
+                <directory>./vendor/</directory>
             </exclude>
         </whitelist>
-        <blacklist>
-            <directory>./vendor/</directory>
-        </blacklist>
     </filter>
 </phpunit>
