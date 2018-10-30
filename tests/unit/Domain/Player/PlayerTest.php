@@ -12,15 +12,36 @@ class PlayerTest extends TestCase
 {
     public function testPlayerCreatedSuccessfully()
     {
+        $playerId = new PlayerId();
         $player = new Player(
-            new PlayerId(),
+            $playerId,
             new PlayerName("mina"),
             PlayerToken::createGameTokenX()
         );
 
         self::assertEquals("mina", $player->name());
         self::assertEquals('x', $player->playingToken());
+        self::assertInstanceOf(PlayerId::class, $player->id());
+        self::assertTrue($playerId->equals($player->id()));
     }
 
+    public function testPlayerCreatedWithPlayingTokenXSuccessfully()
+    {
+        $player = Player::createPlayerWithTokenX("mina");
 
+        self::assertEquals("mina", $player->name());
+        self::assertEquals('x', $player->playingToken());
+        self::assertInstanceOf(PlayerId::class, $player->id());
+        self::assertNotNull($player->id());
+    }
+
+    public function testPlayerCreatedWithPlayingTokenYSuccessfully()
+    {
+        $player = Player::createPlayerWithTokenY("mina");
+
+        self::assertEquals("mina", $player->name());
+        self::assertEquals('y', $player->playingToken());
+        self::assertInstanceOf(PlayerId::class, $player->id());
+        self::assertNotNull($player->id());
+    }
 }

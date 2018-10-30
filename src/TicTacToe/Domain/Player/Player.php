@@ -49,4 +49,9 @@ final class Player
     {
         return (string) $this->playingToken;
     }
+
+    public function id(): PlayerId
+    {
+        return $this->id;
+    }
 }
