@@ -1,7 +1,7 @@
 CMD = docker-compose exec php
 COMPOSER ?= composer
 PROJECT = "TicTacToe."
-ENV = ${RUNNER}
+ENV = $(RUNNER)
 
 ifeq ($(ENV),"travis")
 	CMD = ""
