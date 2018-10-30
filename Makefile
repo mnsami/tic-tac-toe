@@ -1,6 +1,11 @@
 CMD = docker-compose exec php
 COMPOSER ?= composer
 PROJECT = "TicTacToe."
+ENV = ${RUNNER}
+
+ifeq ($(ENV),"travis")
+	CMD = ""
+endif
 
 all: clear lint-composer lint-php composer phpcs play
 
@@ -13,6 +18,7 @@ lint-php:
 	@find src -type f -name \*.php | while read file; do php -l "$$file" || exit 1; done
 
 composer:
+	@echo "\n==> Running composer install, runner $(RUNNER)"
 	$(CMD) $(COMPOSER) install
 
 clear:
