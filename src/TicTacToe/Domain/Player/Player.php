@@ -13,13 +13,13 @@ final class Player
     private $name;
 
     /** @var PlayerToken */
-    private $gameToken;
+    private $playingToken;
 
     public function __construct(PlayerId $id, PlayerName $name, PlayerToken $token)
     {
         $this->id = $id;
         $this->name = $name;
-        $this->gameToken = $token;
+        $this->playingToken = $token;
     }
 
     public static function createPlayerWithTokenX(string $name): Player
@@ -45,8 +45,8 @@ final class Player
         return (string) $this->name;
     }
 
-    public function token(): string
+    public function playingToken(): string
     {
-        return (string) $this->gameToken;
+        return (string) $this->playingToken;
     }
 }

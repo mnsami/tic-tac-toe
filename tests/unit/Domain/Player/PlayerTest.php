@@ -19,7 +19,7 @@ class PlayerTest extends TestCase
         );
 
         self::assertEquals("mina", $player->name());
-        self::assertEquals('x', $player->token());
+        self::assertEquals('x', $player->playingToken());
     }
 
 
