@@ -38,5 +38,9 @@ tests:
 	@echo "\n==> Running tests .. $(RUNNER)"
 	$(CMD) bin/phpunit
 
+build-docker:
+	@echo "\n==> Docker container building and starting ..."
+	docker-compose up --build -d
 
-.PHONY: lint-php lint-composer phpcs phpcbf composer clear tests coverage
+
+.PHONY: lint-php lint-composer phpcs phpcbf composer clear tests coverage build-docker
