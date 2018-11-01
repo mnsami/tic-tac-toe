@@ -23,6 +23,6 @@ final class Cell
 
     public static function empty(): Cell
     {
-        return new Cell('');
+        return new Cell();
     }
 }
