@@ -8,7 +8,8 @@ A php-cli Tic-Tac-Toe simple two players game.
 
 ### Requirements
 
-1. `php >= 7.0` (required for `phpunit v6.1`)
+1. `php >= 7.2`
+2. `Docker`
 
 ### Installation
 
@@ -18,11 +19,11 @@ Run `make all` will do all the magic for you.
 
 ### Start playing
 
-To start playing the game, you need to run `php main.php`
+To start playing the game, you need to run `make play`
 
 ### Unit tests
 
-To generate tests report, run `make test`.
+To generate tests report, run `make tests`.
 
 ### Coverage
 

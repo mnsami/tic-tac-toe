@@ -20,12 +20,12 @@ final class ConsoleOutput implements Output
 
     public function success(string $message)
     {
-        echo sprintf(self::success, $message);
+        echo sprintf(self::SUCCESS, $message);
     }
 
     public function warning(string $message)
     {
-        echo sprintf(self::warning, $message);
+        echo sprintf(self::WARNING, $message);
     }
 
     public function info(string $message)
