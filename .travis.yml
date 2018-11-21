@@ -3,4 +3,4 @@ env:
 language: php
 php:
     - '7.2'
-install: make all
+install: make clear lint-composer lint-php composer phpcs tests
