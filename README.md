@@ -1,4 +1,4 @@
-# tic-tac-toe-sami
+# tic-tac-toe
 
 [![Build Status](https://travis-ci.org/mnsami/tic-tac-toe.svg?branch=master)](https://travis-ci.org/mnsami/tic-tac-toe)
 
