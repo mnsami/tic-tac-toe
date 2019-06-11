@@ -4,7 +4,10 @@ declare(strict_types = 1);
 
 namespace TicTacToe\Domain\Player;
 
-final class Player
+use TicTacToe\Domain\Player\Event\PlayerCreated;
+use TicTacToe\Domain\Shared\AggregateRoot;
+
+final class Player extends AggregateRoot
 {
     /** @var PlayerId */
     private $id;
@@ -15,7 +18,7 @@ final class Player
     /** @var PlayerToken */
     private $playingToken;
 
-    public function __construct(PlayerId $id, PlayerName $name, PlayerToken $token)
+    private function __construct(PlayerId $id, PlayerName $name, PlayerToken $token)
     {
         $this->id = $id;
         $this->name = $name;
@@ -24,11 +27,17 @@ final class Player
 
     public static function createPlayerWithTokenX(string $name): Player
     {
-        return new self(
+        $player =  new self(
             new PlayerId(),
             new PlayerName($name),
             PlayerToken::createGameTokenX()
         );
+
+        $player->record(
+            new PlayerCreated($player)
+        );
+
+        return $player;
     }
 
     public static function createPlayerWithTokenY(string $name): Player
