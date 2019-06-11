@@ -1,4 +1,5 @@
 COMPOSER ?= composer
+DOCKER_COMPOSE = docker-compose
 PROJECT = "TicTacToe."
 
 ifeq ($(RUNNER), travis)
@@ -42,9 +43,17 @@ static-analysis:
 	@echo "\n==> Running static analysis"
 	$(CMD) bin/phpstan -l 7 -c phpstan.neon src tests
 
+container-stop:
+	@echo "\n==> Stopping docker container"
+	$(DOCKER_COMPOSE) stop
+
+container-down:
+	@echo "\n==> Removing docker container"
+	$(DOCKER_COMPOSE) down
+
 build-docker:
 	@echo "\n==> Docker container building and starting ..."
 	docker-compose up --build -d
 
 
-.PHONY: lint-php lint-composer phpcs phpcbf composer clear tests coverage build-docker static-analysis
+.PHONY: lint-php lint-composer phpcs phpcbf composer clear tests coverage build-docker static-analysis container-stop container-down
