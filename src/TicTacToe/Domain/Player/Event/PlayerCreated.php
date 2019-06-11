@@ -12,9 +12,6 @@ final class PlayerCreated implements Event
     /** @var Player */
     private $player;
 
-    /** @var \DateTimeImmutable */
-    private $createdAt;
-
     public function __construct(Player $player)
     {
         $this->player = $player;
@@ -25,7 +22,7 @@ final class PlayerCreated implements Event
      */
     public function occurredAt(): \DateTimeImmutable
     {
-        return $this->createdAt;
+        return $this->player->createdAt();
     }
 
     /**
@@ -35,9 +32,9 @@ final class PlayerCreated implements Event
     {
         return [
             'playerId' => (string) $this->player->id(),
-            'name' => $this->player->name(),
-            'token' => $this->player->playingToken(),
-            'createdAt' => $this->createdAt->format(\DateTimeImmutable::ATOM)
+            'playerName' => $this->player->name(),
+            'playerToken' => $this->player->playingToken(),
+            'createdAt' => $this->player->createdAt()->format(\DateTimeImmutable::ATOM)
         ];
     }
 

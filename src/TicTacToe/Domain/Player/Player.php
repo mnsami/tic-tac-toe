@@ -18,11 +18,15 @@ final class Player extends AggregateRoot
     /** @var PlayerToken */
     private $playingToken;
 
+    /** @var \DateTimeImmutable */
+    private $createdAt;
+
     private function __construct(PlayerId $id, PlayerName $name, PlayerToken $token)
     {
         $this->id = $id;
         $this->name = $name;
         $this->playingToken = $token;
+        $this->createdAt = new \DateTimeImmutable();
     }
 
     public static function createPlayerWithTokenX(string $name): Player
@@ -68,5 +72,10 @@ final class Player extends AggregateRoot
     public function id(): PlayerId
     {
         return $this->id;
+    }
+
+    public function createdAt(): \DateTimeImmutable
+    {
+        return $this->createdAt;
     }
 }

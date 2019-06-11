@@ -7,7 +7,7 @@ use TicTacToe\Domain\Player\PlayerId;
 
 class PlayerIdTest extends \PHPUnit\Framework\TestCase
 {
-    public function testItCreateSuccessWithUUID4()
+    public function testItCreateSuccessWithUUID4IfNothingPassed()
     {
         $playerId = new PlayerId();
 
