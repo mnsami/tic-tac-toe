@@ -12,4 +12,10 @@ interface CommandHandler
      * @return string
      */
     public function handles(): string;
+
+    /**
+     * @param Command $command
+     * @return DataTransformer
+     */
+    public function handle(Command $command): DataTransformer;
 }

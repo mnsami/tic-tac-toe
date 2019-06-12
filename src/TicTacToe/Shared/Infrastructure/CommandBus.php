@@ -2,7 +2,11 @@
 
 declare(strict_types = 1);
 
-namespace TicTacToe\Shared\Infrastructure\CommandBus;
+namespace TicTacToe\Shared\Infrastructure;
+
+use TicTacToe\Shared\Application\Command;
+use TicTacToe\Shared\Application\CommandHandler;
+use TicTacToe\Shared\Application\DataTransformer;
 
 interface CommandBus
 {
