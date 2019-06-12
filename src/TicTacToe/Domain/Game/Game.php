@@ -11,6 +11,9 @@ use TicTacToe\Domain\Player\PlayerSet;
 
 final class Game
 {
+    /** @var GameId */
+    private $id;
+
     /** @var PlayerSet */
     private $players;
 
@@ -19,13 +22,29 @@ final class Game
 
     public const MAX_PLAYERS = 2;
 
-    public function __construct(Board $board, Player ...$players)
+    public function __construct(GameId $gameId, Board $board, Player ...$players)
     {
         if (count($players) > self::MAX_PLAYERS) {
             throw new SorryTooManyPlayers("Only " . self::MAX_PLAYERS . " players allowed.");
         }
 
+        $this->id = $gameId;
         $this->board = $board;
-        $this->players = new PlayerSet($players);
+        $this->players = new PlayerSet(...$players);
+    }
+
+    public function id(): GameId
+    {
+        return $this->id;
+    }
+
+    public function players(): PlayerSet
+    {
+        return $this->players;
+    }
+
+    public function board(): Board
+    {
+        return $this->board;
     }
 }
