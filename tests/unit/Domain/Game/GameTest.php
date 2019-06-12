@@ -15,7 +15,7 @@ class GameTest extends TestCase
     {
         $gameId = new GameId();
         $players = $this->createPlayers(2);
-        $game = new Game($gameId, Board::create3By3Board(), ...$players);
+        $game = Game::start($gameId, Board::create3By3Board(), ...$players);
 
         self::assertEquals(2, $game->players()->count());
         self::assertInstanceOf(GameId::class, $game->id());
@@ -27,7 +27,7 @@ class GameTest extends TestCase
         $gameId = new GameId();
         $players = $this->createPlayers(3);
         self::expectException(SorryTooManyPlayers::class);
-        new Game($gameId, Board::create3By3Board(), ...$players);
+        Game::start($gameId, Board::create3By3Board(), ...$players);
     }
 
     public function randomizeString(int $length)
