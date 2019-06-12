@@ -8,7 +8,7 @@ else
 	CMD := docker-compose exec php
 endif
 
-all: clear build-docker lint-composer lint-php composer phpcs tests static-analysis
+all: clear container-up lint-composer lint-php composer phpcs tests static-analysis
 
 lint-composer:
 	@echo "\n==> Validating composer.json and composer.lock:"
@@ -51,9 +51,11 @@ container-down:
 	@echo "\n==> Removing docker container"
 	$(DOCKER_COMPOSE) down
 
-build-docker:
+container-up:
 	@echo "\n==> Docker container building and starting ..."
-	docker-compose up --build -d
+	$(DOCKER_COMPOSE) up --build -d
+
+tear-down: container-stop container-down
 
 
-.PHONY: lint-php lint-composer phpcs phpcbf composer clear tests coverage build-docker static-analysis container-stop container-down
+.PHONY: lint-php lint-composer phpcs phpcbf composer clear tests coverage container-up static-analysis container-stop container-down
