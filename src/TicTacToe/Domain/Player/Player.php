@@ -59,6 +59,21 @@ final class Player extends AggregateRoot
         return $player;
     }
 
+    public static function createPlayerWithToken(string $name, string $token): Player
+    {
+        $player = new self(
+            new PlayerId(),
+            new PlayerName($name),
+            new PlayerToken($token)
+        );
+
+        $player->record(
+            new PlayerCreated($player)
+        );
+
+        return $player;
+    }
+
     public function name(): string
     {
         return (string) $this->name;
