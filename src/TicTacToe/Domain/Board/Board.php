@@ -42,7 +42,7 @@ final class Board
 
     public static function create3By3Board(): Board
     {
-        return new Board(
+        return new self(
             self::BOARD_SIZE_3
         );
     }
