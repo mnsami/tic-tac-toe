@@ -4,7 +4,9 @@ declare(strict_types = 1);
 
 namespace TicTacToe\Application\Player;
 
-final class CreatePlayerCommand
+use TicTacToe\Domain\Shared\Command;
+
+final class CreatePlayerCommand implements Command
 {
     /** @var string */
     private $name;

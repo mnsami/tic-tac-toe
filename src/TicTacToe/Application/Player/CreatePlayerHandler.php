@@ -6,8 +6,9 @@ namespace TicTacToe\Application\Player;
 
 use TicTacToe\Domain\Player\Player;
 use TicTacToe\Domain\Player\PlayerRepository;
+use TicTacToe\Domain\Shared\CommandHandler;
 
-final class CreatePlayerHandler
+final class CreatePlayerHandler implements CommandHandler
 {
     /** @var PlayerRepository */
     private $playerRepository;
@@ -24,5 +25,13 @@ final class CreatePlayerHandler
         $this->playerRepository->add($player);
 
         return $player;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function handles(): string
+    {
+        return CreatePlayerCommand::class;
     }
 }
