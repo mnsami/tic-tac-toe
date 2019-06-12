@@ -2,7 +2,7 @@
 
 declare(strict_types = 1);
 
-namespace TicTacToe\Domain\Model\Board;
+namespace TicTacToe\Engine\Domain\Model\Board;
 
 use TicTacToe\Domain\Model\Player\PlayerToken;
 

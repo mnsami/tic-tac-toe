@@ -2,7 +2,6 @@
 <phpunit colors="true">
     <testsuites>
         <testsuite name="TicTacToe Test Suite">
-            <directory suffix="Test.php">./src/TicTacToe/Test/</directory>
             <directory suffix="Test.php">./tests/</directory>
         </testsuite>
     </testsuites>

@@ -3,8 +3,8 @@
 declare(strict_types = 1);
 
 use PHPUnit\Framework\TestCase;
-use TicTacToe\Domain\Board\Board;
-use TicTacToe\Domain\Board\Exception\SorryBoardSizeIsNotValid;
+use TicTacToe\Engine\Domain\Model\Board\Board;
+use TicTacToe\Engine\Domain\Model\Board\Exception\SorryBoardSizeIsNotValid;
 
 class BoardTest extends TestCase
 {
