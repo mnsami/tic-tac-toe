@@ -2,13 +2,13 @@
 
 declare(strict_types = 1);
 
-namespace TicTacToe\Domain\Model\Game;
+namespace TicTacToe\Engine\Domain\Model\Game;
 
-use TicTacToe\Domain\Model\Board\Board;
-use TicTacToe\Domain\Model\Game\Event\GameCreated;
-use TicTacToe\Domain\Model\Game\Exception\SorryTooManyPlayers;
-use TicTacToe\Domain\Model\Player\Player;
-use TicTacToe\Domain\Model\Player\PlayerSet;
+use TicTacToe\Engine\Domain\Model\Board\Board;
+use TicTacToe\Engine\Domain\Model\Game\Event\GameCreated;
+use TicTacToe\Engine\Domain\Model\Game\Exception\SorryTooManyPlayers;
+use TicTacToe\Engine\Domain\Model\Player\Player;
+use TicTacToe\Engine\Domain\Model\Player\PlayerSet;
 use TicTacToe\Shared\Domain\Model\AggregateRoot;
 
 final class Game extends AggregateRoot

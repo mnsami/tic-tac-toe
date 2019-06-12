@@ -2,10 +2,10 @@
 
 declare(strict_types = 1);
 
-namespace TicTacToe\Domain\Model\Game\Event;
+namespace TicTacToe\Engine\Domain\Model\Game\Event;
 
-use TicTacToe\Domain\Game\Game;
-use TicTacToe\Domain\Shared\Event;
+use TicTacToe\Engine\Domain\Model\Game\Game;
+use TicTacToe\Shared\Domain\Model\Event;
 
 final class GameCreated implements Event
 {

@@ -2,9 +2,9 @@
 
 declare(strict_types = 1);
 
-namespace TicTacToe\Domain\Model\Player;
+namespace TicTacToe\Engine\Domain\Model\Player;
 
-use TicTacToe\Domain\Model\Player\Exception\SorryInvalidPlayerToken;
+use TicTacToe\Engine\Domain\Model\Player\Exception\SorryInvalidPlayerToken;
 
 final class PlayerToken
 {

@@ -2,9 +2,9 @@
 
 declare(strict_types = 1);
 
-namespace TicTacToe\Domain\Model\Player;
+namespace TicTacToe\Engine\Domain\Model\Player;
 
-use TicTacToe\Domain\Model\Player\Event\PlayerCreated;
+use TicTacToe\Engine\Domain\Model\Player\Event\PlayerCreated;
 use TicTacToe\Shared\Domain\Model\AggregateRoot;
 
 final class Player extends AggregateRoot

@@ -2,7 +2,7 @@
 
 declare(strict_types = 1);
 
-namespace TicTacToe\Domain\Model\Player\Exception;
+namespace TicTacToe\Engine\Domain\Model\Player\Exception;
 
 class SorryInvalidPlayerToken extends \Exception
 {

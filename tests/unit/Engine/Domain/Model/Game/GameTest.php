@@ -3,11 +3,11 @@
 declare(strict_types = 1);
 
 use PHPUnit\Framework\TestCase;
-use TicTacToe\Domain\Board\Board;
-use TicTacToe\Domain\Game\Exception\SorryTooManyPlayers;
-use TicTacToe\Domain\Game\Game;
-use TicTacToe\Domain\Game\GameId;
-use TicTacToe\Domain\Player\Player;
+use TicTacToe\Engine\Domain\Model\Board\Board;
+use TicTacToe\Engine\Domain\Model\Game\Exception\SorryTooManyPlayers;
+use TicTacToe\Engine\Domain\Model\Game\Game;
+use TicTacToe\Engine\Domain\Model\Game\GameId;
+use TicTacToe\Engine\Domain\Model\Player\Player;
 
 class GameTest extends TestCase
 {

@@ -2,10 +2,10 @@
 
 declare(strict_types = 1);
 
-namespace TicTacToe\Domain\Model\Player;
+namespace TicTacToe\Engine\Domain\Model\Player;
 
-use TicTacToe\Domain\Model\Player\Exception\SorryPlayerNameIsTooLong;
-use TicTacToe\Domain\Model\Player\Exception\SorryPlayerNameIsTooShort;
+use TicTacToe\Engine\Domain\Model\Player\Exception\SorryPlayerNameIsTooLong;
+use TicTacToe\Engine\Domain\Model\Player\Exception\SorryPlayerNameIsTooShort;
 
 final class PlayerName
 {

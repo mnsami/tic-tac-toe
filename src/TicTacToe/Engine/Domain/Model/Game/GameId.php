@@ -2,7 +2,7 @@
 
 declare(strict_types = 1);
 
-namespace TicTacToe\Domain\Model\Game;
+namespace TicTacToe\Engine\Domain\Model\Game;
 
 use Ramsey\Uuid\Uuid;
 
