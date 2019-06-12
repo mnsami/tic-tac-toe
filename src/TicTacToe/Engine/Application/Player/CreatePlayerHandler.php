@@ -2,11 +2,11 @@
 
 declare(strict_types = 1);
 
-namespace TicTacToe\Application\Player;
+namespace TicTacToe\Engine\Application\Player;
 
-use TicTacToe\Domain\Player\Player;
-use TicTacToe\Domain\Player\PlayerRepository;
-use TicTacToe\Domain\Shared\CommandHandler;
+use TicTacToe\Engine\Domain\Model\Player\Player;
+use TicTacToe\Engine\Domain\Model\Player\PlayerRepository;
+use TicTacToe\Shared\Application\CommandHandler;
 
 final class CreatePlayerHandler implements CommandHandler
 {

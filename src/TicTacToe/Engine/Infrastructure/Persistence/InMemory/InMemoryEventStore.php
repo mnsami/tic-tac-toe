@@ -2,7 +2,7 @@
 
 declare(strict_types = 1);
 
-namespace TicTacToe\Infrastructure\Persistence\InMemory;
+namespace TicTacToe\Engine\Infrastructure\Persistence\InMemory;
 
 use TicTacToe\Shared\Domain\Model\Event;
 use TicTacToe\Shared\Infrastructure\EventStore;

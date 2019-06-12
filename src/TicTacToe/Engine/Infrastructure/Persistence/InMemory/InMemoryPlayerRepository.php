@@ -2,11 +2,11 @@
 
 declare(strict_types = 1);
 
-namespace TicTacToe\Infrastructure\Persistence\InMemory;
+namespace TicTacToe\Engine\Infrastructure\Persistence\InMemory;
 
-use TicTacToe\Domain\Model\Player\Player;
-use TicTacToe\Domain\Model\Player\PlayerId;
-use TicTacToe\Domain\Model\Player\PlayerRepository;
+use TicTacToe\Engine\Domain\Model\Player\Player;
+use TicTacToe\Engine\Domain\Model\Player\PlayerId;
+use TicTacToe\Engine\Domain\Model\Player\PlayerRepository;
 
 class InMemoryPlayerRepository implements PlayerRepository
 {

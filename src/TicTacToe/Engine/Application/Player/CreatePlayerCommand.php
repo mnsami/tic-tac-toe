@@ -4,7 +4,7 @@ declare(strict_types = 1);
 
 namespace TicTacToe\Engine\Application\Player;
 
-use TicTacToe\Domain\Shared\Command;
+use TicTacToe\Shared\Application\Command;
 
 final class CreatePlayerCommand implements Command
 {
