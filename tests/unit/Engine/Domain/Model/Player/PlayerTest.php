@@ -3,12 +3,10 @@
 declare(strict_types = 1);
 
 use PHPUnit\Framework\TestCase;
-use TicTacToe\Domain\Player\Exception\SorryPlayerNameIsTooLong;
-use TicTacToe\Domain\Player\Exception\SorryPlayerNameIsTooShort;
-use TicTacToe\Domain\Player\Player;
-use TicTacToe\Domain\Player\PlayerId;
-use TicTacToe\Domain\Player\PlayerName;
-use TicTacToe\Domain\Player\PlayerToken;
+use TicTacToe\Engine\Domain\Model\Player\Exception\SorryPlayerNameIsTooLong;
+use TicTacToe\Engine\Domain\Model\Player\Exception\SorryPlayerNameIsTooShort;
+use TicTacToe\Engine\Domain\Model\Player\Player;
+use TicTacToe\Engine\Domain\Model\Player\PlayerId;
 
 class PlayerTest extends TestCase
 {
