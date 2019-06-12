@@ -2,10 +2,11 @@
 
 declare(strict_types = 1);
 
-use TicTacToe\Domain\Player\Event\PlayerCreated;
-use TicTacToe\Domain\Player\Player;
+use PHPUnit\Framework\TestCase;
+use TicTacToe\Engine\Domain\Model\Player\Event\PlayerCreated;
+use TicTacToe\Engine\Domain\Model\Player\Player;
 
-class PlayerCreatedTest extends \PHPUnit\Framework\TestCase
+class PlayerCreatedTest extends TestCase
 {
     public function testItExposesCorrectData()
     {
