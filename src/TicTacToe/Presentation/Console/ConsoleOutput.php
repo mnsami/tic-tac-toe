@@ -2,9 +2,9 @@
 
 declare(strict_types = 1);
 
-namespace TicTacToe\Infrastructure\UI\Console;
+namespace TicTacToe\Presentation\Console;
 
-use TicTacToe\Infrastructure\UI\Output;
+use TicTacToe\Presentation\Output;
 
 final class ConsoleOutput implements Output
 {

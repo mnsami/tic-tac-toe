@@ -2,7 +2,7 @@
 
 declare(strict_types = 1);
 
-namespace TicTacToe\Infrastructure\UI;
+namespace TicTacToe\Presentation;
 
 interface Output
 {
