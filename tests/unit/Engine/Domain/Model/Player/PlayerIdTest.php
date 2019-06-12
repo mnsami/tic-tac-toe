@@ -4,7 +4,7 @@ declare(strict_types = 1);
 
 use PHPUnit\Framework\TestCase;
 use Ramsey\Uuid\Uuid;
-use TicTacToe\Domain\Player\PlayerId;
+use TicTacToe\Engine\Domain\Model\Player\PlayerId;
 
 class PlayerIdTest extends TestCase
 {
