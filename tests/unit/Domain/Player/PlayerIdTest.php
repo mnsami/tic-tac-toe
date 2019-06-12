@@ -2,10 +2,11 @@
 
 declare(strict_types = 1);
 
+use PHPUnit\Framework\TestCase;
 use Ramsey\Uuid\Uuid;
 use TicTacToe\Domain\Player\PlayerId;
 
-class PlayerIdTest extends \PHPUnit\Framework\TestCase
+class PlayerIdTest extends TestCase
 {
     public function testItCreateSuccessWithUUID4IfNothingPassed()
     {
