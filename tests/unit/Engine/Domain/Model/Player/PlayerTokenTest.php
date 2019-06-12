@@ -3,8 +3,8 @@
 declare(strict_types = 1);
 
 use PHPUnit\Framework\TestCase;
-use TicTacToe\Domain\Player\Exception\SorryInvalidPlayerToken;
-use TicTacToe\Domain\Player\PlayerToken;
+use TicTacToe\Engine\Domain\Model\Player\Exception\SorryInvalidPlayerToken;
+use TicTacToe\Engine\Domain\Model\Player\PlayerToken;
 
 class PlayerTokenTest extends TestCase
 {

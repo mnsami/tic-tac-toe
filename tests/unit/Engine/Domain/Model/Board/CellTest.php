@@ -2,10 +2,11 @@
 
 declare(strict_types = 1);
 
-use TicTacToe\Domain\Board\Cell;
-use TicTacToe\Domain\Player\PlayerToken;
+use PHPUnit\Framework\TestCase;
+use TicTacToe\Engine\Domain\Model\Board\Cell;
+use TicTacToe\Engine\Domain\Model\Player\PlayerToken;
 
-class CellTest extends \PHPUnit\Framework\TestCase
+class CellTest extends TestCase
 {
     public function testCellCreatedSuccessfully()
     {
