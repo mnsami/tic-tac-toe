@@ -2,7 +2,7 @@
 
 declare(strict_types = 1);
 
-namespace TicTacToe\Infrastructure\Repository;
+namespace TicTacToe\Infrastructure\InMemory;
 
 use TicTacToe\Domain\Player\Player;
 use TicTacToe\Domain\Player\PlayerId;
