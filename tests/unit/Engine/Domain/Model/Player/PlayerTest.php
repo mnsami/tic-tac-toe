@@ -3,6 +3,7 @@
 declare(strict_types = 1);
 
 use PHPUnit\Framework\TestCase;
+use TicTacToe\Engine\Domain\Model\Player\Exception\SorryInvalidPlayerToken;
 use TicTacToe\Engine\Domain\Model\Player\Exception\SorryPlayerNameIsTooLong;
 use TicTacToe\Engine\Domain\Model\Player\Exception\SorryPlayerNameIsTooShort;
 use TicTacToe\Engine\Domain\Model\Player\Player;
@@ -19,6 +20,27 @@ class PlayerTest extends TestCase
         self::assertEquals("mina", $player->name());
         self::assertEquals('x', $player->playingToken());
         self::assertInstanceOf(PlayerId::class, $player->id());
+    }
+
+    public function testPlayerCreatedWithPlayingTokenSuccessfully()
+    {
+        $player = Player::createPlayerWithToken(
+            "mina",
+            'x'
+        );
+
+        self::assertEquals("mina", $player->name());
+        self::assertEquals('x', $player->playingToken());
+        self::assertInstanceOf(PlayerId::class, $player->id());
+    }
+
+    public function testPlayerThrowsInvalidPlayerTokenWhenInvalidToken()
+    {
+        self::expectException(SorryInvalidPlayerToken::class);
+        $player = Player::createPlayerWithToken(
+            "mina",
+            'z'
+        );
     }
 
     public function testPlayerCreatedWithPlayingTokenXSuccessfully()
