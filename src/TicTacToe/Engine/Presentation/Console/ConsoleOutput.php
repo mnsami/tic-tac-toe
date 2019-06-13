@@ -8,10 +8,10 @@ use TicTacToe\Engine\Presentation\Output;
 
 final class ConsoleOutput implements Output
 {
-    private const ERROR = "\033[31mERROR: %s";
-    private const SUCCESS = "\033[32m%s";
-    private const INFO = "\033[0m%s";
-    private const WARNING = "\033[33mWarning: %s";
+    private const ERROR = "\033[31mERROR: %s\n";
+    private const SUCCESS = "\033[32m%s\n";
+    private const INFO = "\033[0mINFO: %s\n";
+    private const WARNING = "\033[33mWarning: %s\n";
 
     public function error(string $error)
     {
