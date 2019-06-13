@@ -9,6 +9,7 @@ use TicTacToe\Engine\Domain\Model\Player\PlayerRepository;
 use TicTacToe\Shared\Application\Command;
 use TicTacToe\Shared\Application\CommandHandler;
 use TicTacToe\Shared\Application\DataTransformer;
+use TicTacToe\Shared\Application\Exception\SorryWrongCommand;
 
 final class CreateNewPlayerHandler implements CommandHandler
 {
@@ -33,6 +34,9 @@ final class CreateNewPlayerHandler implements CommandHandler
      */
     public function handle(Command $command): DataTransformer
     {
+        if (!$command instanceof CreateNewPlayerCommand) {
+            throw new SorryWrongCommand();
+        }
         $player = Player::createPlayerWithToken($command->name(), $command->token());
 
         $this->playerRepository->add($player);
