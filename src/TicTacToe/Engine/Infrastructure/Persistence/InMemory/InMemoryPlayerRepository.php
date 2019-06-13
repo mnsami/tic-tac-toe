@@ -20,11 +20,11 @@ class InMemoryPlayerRepository implements PlayerRepository
 
     public function ofId(PlayerId $playerId): ?Player
     {
-        if (!isset($this->players[(string)$playerId->id()])) {
+        if (!isset($this->players[(string) $playerId])) {
             return null;
         }
 
-        return $this->players[$playerId->id()];
+        return $this->players[(string) $playerId];
     }
 
     public function nextIdentity(): PlayerId
