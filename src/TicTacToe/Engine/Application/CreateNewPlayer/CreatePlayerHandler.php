@@ -2,7 +2,7 @@
 
 declare(strict_types = 1);
 
-namespace TicTacToe\Engine\Application\CreatePlayer;
+namespace TicTacToe\Engine\Application\CreateNewPlayer;
 
 use TicTacToe\Engine\Domain\Model\Player\Player;
 use TicTacToe\Engine\Domain\Model\Player\PlayerRepository;
@@ -37,6 +37,6 @@ final class CreatePlayerHandler implements CommandHandler
 
         $this->playerRepository->add($player);
 
-        return new CreatePlayerDto($player);
+        return new CreatePlayerResponseDto($player);
     }
 }

@@ -2,7 +2,7 @@
 
 declare(strict_types = 1);
 
-namespace TicTacToe\Engine\Application\CreatePlayer;
+namespace TicTacToe\Engine\Application\CreateNewPlayer;
 
 use TicTacToe\Shared\Application\Command;
 

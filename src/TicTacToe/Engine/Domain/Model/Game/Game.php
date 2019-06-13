@@ -8,7 +8,8 @@ use TicTacToe\Engine\Domain\Model\Board\Board;
 use TicTacToe\Engine\Domain\Model\Game\Event\GameCreated;
 use TicTacToe\Engine\Domain\Model\Game\Exception\SorryTooManyPlayers;
 use TicTacToe\Engine\Domain\Model\Player\Player;
-use TicTacToe\Engine\Domain\Model\Player\PlayerSet;
+use TicTacToe\Engine\Domain\Model\Player\PlayerId;
+use TicTacToe\Engine\Domain\Model\Player\PlayerIdSet;
 use TicTacToe\Shared\Domain\Model\AggregateRoot;
 
 final class Game extends AggregateRoot
@@ -16,8 +17,8 @@ final class Game extends AggregateRoot
     /** @var GameId */
     private $id;
 
-    /** @var PlayerSet */
-    private $players;
+    /** @var PlayerIdSet */
+    private $playerIds;
 
     /** @var Board */
     private $board;
@@ -27,15 +28,15 @@ final class Game extends AggregateRoot
 
     public const MAX_PLAYERS = 2;
 
-    private function __construct(GameId $gameId, Board $board, Player ...$players)
+    private function __construct(GameId $gameId, Board $board, PlayerId ...$playerIds)
     {
-        if (count($players) > self::MAX_PLAYERS) {
+        if (count($playerIds) > self::MAX_PLAYERS) {
             throw new SorryTooManyPlayers("Only " . self::MAX_PLAYERS . " players allowed.");
         }
 
         $this->id = $gameId;
         $this->board = $board;
-        $this->players = new PlayerSet(...$players);
+        $this->playerIds = new PlayerIdSet(...$playerIds);
         $this->createdAt = new \DateTimeImmutable();
     }
 
@@ -55,9 +56,9 @@ final class Game extends AggregateRoot
         return $this->id;
     }
 
-    public function players(): PlayerSet
+    public function players(): PlayerIdSet
     {
-        return $this->players;
+        return $this->playerIds;
     }
 
     public function board(): Board

@@ -41,6 +41,13 @@ class InMemoryPlayerRepositoryTest extends TestCase
         self::assertTrue(Uuid::isValid((string) $nextId));
     }
 
+    public function testItReturnsNullIfPlayerNotFound()
+    {
+        $playerId = new PlayerId('1');
+        $retrievedPlayer = $this->repository->ofId($playerId);
+        self::assertEquals(null, $retrievedPlayer);
+    }
+
     protected function createPlayer(string $name = 'foobar')
     {
         $player = Player::createPlayerWithTokenX($name);

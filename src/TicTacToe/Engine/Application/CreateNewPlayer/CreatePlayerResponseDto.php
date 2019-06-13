@@ -2,12 +2,12 @@
 
 declare(strict_types = 1);
 
-namespace TicTacToe\Engine\Application\CreatePlayer;
+namespace TicTacToe\Engine\Application\CreateNewPlayer;
 
 use TicTacToe\Engine\Domain\Model\Player\Player;
 use TicTacToe\Shared\Application\DataTransformer;
 
-final class CreatePlayerDto implements DataTransformer
+final class CreatePlayerResponseDto implements DataTransformer
 {
     /** @var string */
     private $playerId;
