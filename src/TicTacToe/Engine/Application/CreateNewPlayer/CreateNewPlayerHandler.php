@@ -10,7 +10,7 @@ use TicTacToe\Shared\Application\Command;
 use TicTacToe\Shared\Application\CommandHandler;
 use TicTacToe\Shared\Application\DataTransformer;
 
-final class CreatePlayerHandler implements CommandHandler
+final class CreateNewPlayerHandler implements CommandHandler
 {
     /** @var PlayerRepository */
     private $playerRepository;
@@ -25,7 +25,7 @@ final class CreatePlayerHandler implements CommandHandler
      */
     public function handles(): string
     {
-        return CreatePlayerCommand::class;
+        return CreateNewPlayerCommand::class;
     }
 
     /**
@@ -37,6 +37,6 @@ final class CreatePlayerHandler implements CommandHandler
 
         $this->playerRepository->add($player);
 
-        return new CreatePlayerResponseDto($player);
+        return new CreateNewPlayerResponseDto($player);
     }
 }

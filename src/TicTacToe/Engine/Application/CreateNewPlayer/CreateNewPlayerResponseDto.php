@@ -7,7 +7,7 @@ namespace TicTacToe\Engine\Application\CreateNewPlayer;
 use TicTacToe\Engine\Domain\Model\Player\Player;
 use TicTacToe\Shared\Application\DataTransformer;
 
-final class CreatePlayerResponseDto implements DataTransformer
+final class CreateNewPlayerResponseDto implements DataTransformer
 {
     /** @var string */
     private $playerId;
@@ -18,11 +18,15 @@ final class CreatePlayerResponseDto implements DataTransformer
     /** @var string */
     private $playerName;
 
+    /** @var \DateTimeImmutable */
+    private $createdAt;
+
     public function __construct(Player $player)
     {
         $this->playerId = (string) $player->id();
         $this->playerToken = $player->playingToken();
         $this->playerName = $player->name();
+        $this->createdAt = $player->createdAt();
     }
 
     public function playerId(): string
@@ -40,15 +44,21 @@ final class CreatePlayerResponseDto implements DataTransformer
         return $this->playerToken;
     }
 
+    public function createdAt(): \DateTimeImmutable
+    {
+        return $this->createdAt;
+    }
+
     /**
      * @return array
      */
     public function toArray(): array
     {
         return [
-            'playerId' => $this->playerId,
-            'playerName' => $this->playerName,
-            'playerToken' => $this->playerToken
+            'id' => $this->playerId,
+            'name' => $this->playerName,
+            'token' => $this->playerToken,
+            'createdAt' => $this->createdAt->format(\DateTimeImmutable::ATOM)
         ];
     }
 }

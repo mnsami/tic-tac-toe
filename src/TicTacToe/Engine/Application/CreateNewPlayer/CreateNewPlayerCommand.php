@@ -6,7 +6,7 @@ namespace TicTacToe\Engine\Application\CreateNewPlayer;
 
 use TicTacToe\Shared\Application\Command;
 
-final class CreatePlayerCommand implements Command
+final class CreateNewPlayerCommand implements Command
 {
     /** @var string */
     private $name;
