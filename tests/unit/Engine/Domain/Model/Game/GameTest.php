@@ -14,10 +14,10 @@ class GameTest extends TestCase
     public function testItCreatesGameSuccessfully()
     {
         $gameId = new GameId();
-        $players = $this->createPlayers(2);
-        $game = Game::start($gameId, Board::create3By3Board(), ...$players);
+        $playerIds = $this->createPlayers(2);
+        $game = Game::start($gameId, Board::create3By3Board(), ...$playerIds);
 
-        self::assertEquals(2, $game->players()->count());
+        self::assertEquals(2, $game->playerIds()->count());
         self::assertInstanceOf(GameId::class, $game->id());
         self::assertInstanceOf(Board::class, $game->board());
     }
@@ -25,9 +25,9 @@ class GameTest extends TestCase
     public function testItThrowsTooManyPlayersWhenMorePlayersCreated()
     {
         $gameId = new GameId();
-        $players = $this->createPlayers(3);
+        $playerIds = $this->createPlayers(3);
         self::expectException(SorryTooManyPlayers::class);
-        Game::start($gameId, Board::create3By3Board(), ...$players);
+        Game::start($gameId, Board::create3By3Board(), ...$playerIds);
     }
 
     public function randomizeString(int $length)
@@ -46,9 +46,9 @@ class GameTest extends TestCase
         $players = [];
         for($i = 0; $i < $count; $i++) {
             if ($i % 2 == 0) {
-                $players[] = Player::createPlayerWithTokenX($this->randomizeString(5));
+                $players[] = Player::createPlayerWithTokenX($this->randomizeString(5))->id();
             } else {
-                $players[] = Player::createPlayerWithTokenY($this->randomizeString(5));
+                $players[] = Player::createPlayerWithTokenY($this->randomizeString(5))->id();
             }
         }
 

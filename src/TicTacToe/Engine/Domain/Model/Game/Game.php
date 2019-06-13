@@ -40,9 +40,9 @@ final class Game extends AggregateRoot
         $this->createdAt = new \DateTimeImmutable();
     }
 
-    public static function start(GameId $gameId, Board $board, Player ...$players)
+    public static function start(GameId $gameId, Board $board, PlayerId ...$playerIds)
     {
-        $game = new self($gameId, $board, ...$players);
+        $game = new self($gameId, $board, ...$playerIds);
 
         $game->record(
             new GameCreated($game)
@@ -56,7 +56,7 @@ final class Game extends AggregateRoot
         return $this->id;
     }
 
-    public function players(): PlayerIdSet
+    public function playerIds(): PlayerIdSet
     {
         return $this->playerIds;
     }
