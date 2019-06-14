@@ -2,6 +2,8 @@
 
 declare(strict_types = 1);
 
+namespace unit\TicTacToe\Engine\Domain\Model\Board;
+
 use PHPUnit\Framework\TestCase;
 use TicTacToe\Engine\Domain\Model\Board\Cell;
 use TicTacToe\Engine\Domain\Model\Player\PlayerToken;

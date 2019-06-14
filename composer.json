@@ -20,8 +20,13 @@
         "phpunit/phpunit": "^7"
     },
     "autoload": {
-        "psr-0": {
-            "TicTacToe": "src/"
+        "psr-4": {
+            "": "./src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "unit\\TicTacToe\\": "./tests/unit"
         }
     },
     "config": {

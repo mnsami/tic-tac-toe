@@ -2,6 +2,8 @@
 
 declare(strict_types = 1);
 
+namespace unit\TicTacToe\Engine\Domain\Model\Player;
+
 use PHPUnit\Framework\TestCase;
 use TicTacToe\Engine\Domain\Model\Player\Exception\SorryPlayerNameIsTooShort;
 use TicTacToe\Engine\Domain\Model\Player\PlayerName;

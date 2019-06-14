@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<phpunit colors="true">
+<phpunit
+        colors="true"
+        bootstrap="vendor/autoload.php">
     <testsuites>
         <testsuite name="TicTacToe Test Suite">
-            <directory suffix="Test.php">./tests/</directory>
+            <directory suffix="Test.php">./tests/unit</directory>
         </testsuite>
     </testsuites>
     <filter>
-        <whitelist processUncoveredFilesFromWhitelist="true">
+        <whitelist>
             <directory suffix=".php">./src/TicTacToe/</directory>
             <exclude>
-                <directory>./src/TicTacToe/Test/</directory>
                 <directory>./vendor/</directory>
             </exclude>
         </whitelist>

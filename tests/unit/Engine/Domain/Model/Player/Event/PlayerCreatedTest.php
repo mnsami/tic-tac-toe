@@ -2,6 +2,8 @@
 
 declare(strict_types = 1);
 
+namespace unit\TicTacToe\Engine\Domain\Model\Player\Event;
+
 use PHPUnit\Framework\TestCase;
 use TicTacToe\Engine\Domain\Model\Player\Event\PlayerCreated;
 use TicTacToe\Engine\Domain\Model\Player\Player;
