@@ -8,7 +8,7 @@ else
 	CMD := docker-compose exec php
 endif
 
-all: container-up clear lint-composer lint-php composer phpcs tests
+all: container-up clear composer lint-composer lint-php  phpcs tests
 
 lint-composer:
 	@echo "\n==> Validating composer.json and composer.lock:"

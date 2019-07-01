@@ -19,7 +19,7 @@ Run `make all` will do all the magic for you.
 
 ### Start playing
 
-To start playing the game, you need to run `make play`
+TODO, refactoring has to be finished first.
 
 ### Unit tests
 
