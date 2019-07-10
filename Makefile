@@ -27,12 +27,14 @@ clear:
 	$(CMD) rm -rf bin/php*
 
 phpcs:
+	@echo "\n==> Checking style guidelines"
 	$(CMD) bin/phpcs --standard=phpcs.xml -p
 
 phpcbf:
 	$(CMD) bin/phpcbf
 
 coverage:
+	@echo "\n==> Generating coverage report"
 	$(CMD) bin/phpunit --coverage-html coverage
 
 tests:
