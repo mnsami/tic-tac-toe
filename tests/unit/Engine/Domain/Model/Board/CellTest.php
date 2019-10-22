@@ -12,7 +12,21 @@ class CellTest extends TestCase
 {
     public function testCellCreatedSuccessfully()
     {
-        $cell = new Cell(PlayerToken::createGameTokenX());
+        $cell = new Cell('x');
+        self::assertEquals('x', (string) $cell);
+    }
+
+    public function testItCanCreateEmptyCell()
+    {
+        $cell = Cell::empty();
+        self::assertEquals('', (string) $cell);
+    }
+
+    public function testItCanCreateCellFromPlayerToken()
+    {
+        $playerToken = PlayerToken::createGameTokenX();
+
+        $cell = Cell::createFromPlayerToken($playerToken);
         self::assertEquals('x', (string) $cell);
     }
 }

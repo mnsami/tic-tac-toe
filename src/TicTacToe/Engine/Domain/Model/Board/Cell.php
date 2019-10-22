@@ -8,10 +8,10 @@ use TicTacToe\Engine\Domain\Model\Player\PlayerToken;
 
 final class Cell
 {
-    /** @var PlayerToken|null */
+    /** @var string */
     private $value;
 
-    public function __construct(?PlayerToken $value = null)
+    public function __construct(string $value = '')
     {
         $this->value = $value;
     }
@@ -24,5 +24,10 @@ final class Cell
     public static function empty(): Cell
     {
         return new Cell();
+    }
+
+    public static function createFromPlayerToken(PlayerToken $playerToken): Cell
+    {
+        return new Cell((string) $playerToken);
     }
 }
