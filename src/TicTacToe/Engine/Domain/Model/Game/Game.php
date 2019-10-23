@@ -7,7 +7,6 @@ namespace TicTacToe\Engine\Domain\Model\Game;
 use TicTacToe\Engine\Domain\Model\Board\Board;
 use TicTacToe\Engine\Domain\Model\Game\Event\GameCreated;
 use TicTacToe\Engine\Domain\Model\Game\Exception\SorryTooManyPlayers;
-use TicTacToe\Engine\Domain\Model\Player\Player;
 use TicTacToe\Engine\Domain\Model\Player\PlayerId;
 use TicTacToe\Engine\Domain\Model\Player\PlayerIdSet;
 use TicTacToe\Shared\Domain\Model\AggregateRoot;

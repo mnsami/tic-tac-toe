@@ -19,7 +19,7 @@ final class Board
     public function __construct(int $size)
     {
         if ($size != self::BOARD_SIZE_3) {
-            throw new SorryBoardSizeIsNotValid("Only allowed size for now is: " . self::BOARD_SIZE_3);
+            throw new SorryBoardSizeIsNotValid("Only allowed size for board is: " . self::BOARD_SIZE_3);
         }
 
         $this->size = $size;
