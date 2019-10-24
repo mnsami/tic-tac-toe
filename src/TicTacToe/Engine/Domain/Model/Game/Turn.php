@@ -7,9 +7,12 @@ use TicTacToe\Engine\Domain\Model\Board\Cell;
 use TicTacToe\Engine\Domain\Model\Board\Position;
 use TicTacToe\Engine\Domain\Model\Player\Player;
 
-final class Move
+final class Turn
 {
-    /** @var MoveId */
+
+    private $gameId;
+
+    /** @var TurnId */
     private $moveId;
 
     /** @var Cell */
@@ -21,8 +24,11 @@ final class Move
     /** @var Position */
     private $position;
 
+    /** @var \DateTimeImmutable */
+    private $createdAt;
+
     public function __construct(
-        MoveId $moveId,
+        TurnId $moveId,
         Cell $cell,
         Position $position,
         Player $madeBy
@@ -31,9 +37,10 @@ final class Move
         $this->cell = $cell;
         $this->madeBy = $madeBy;
         $this->position = $position;
+        $this->createdAt = new \DateTimeImmutable();
     }
 
-    public function moveId(): MoveId
+    public function moveId(): TurnId
     {
         return $this->moveId;
     }
@@ -51,5 +58,10 @@ final class Move
     public function position(): Position
     {
         return $this->position;
+    }
+
+    public function createdAt(): \DateTimeImmutable
+    {
+        return $this->createdAt;
     }
 }

@@ -21,6 +21,11 @@ final class Cell
         return (string) $this->value;
     }
 
+    public function isEmpty(): bool
+    {
+        return empty($this->value);
+    }
+
     public static function empty(): Cell
     {
         return new Cell();

@@ -18,9 +18,7 @@ final class GameCreated implements Event
     }
 
     /**
-     * Return event timestamp
-     *
-     * @return \DateTimeImmutable
+     * @inheritDoc
      */
     public function occurredAt(): \DateTimeImmutable
     {
@@ -28,9 +26,7 @@ final class GameCreated implements Event
     }
 
     /**
-     * Return event data as array
-     *
-     * @return array
+     * @inheritDoc
      */
     public function toArray(): array
     {
@@ -41,9 +37,7 @@ final class GameCreated implements Event
     }
 
     /**
-     * Get event name
-     *
-     * @return string
+     * @inheritDoc
      */
     public function name(): string
     {

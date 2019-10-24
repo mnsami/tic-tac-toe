@@ -6,6 +6,7 @@ namespace TicTacToe\Engine\Domain\Model\Game;
 
 use TicTacToe\Engine\Domain\Model\Board\Board;
 use TicTacToe\Engine\Domain\Model\Game\Event\GameCreated;
+use TicTacToe\Engine\Domain\Model\Game\Event\PlayerTurnPlayed;
 use TicTacToe\Engine\Domain\Model\Game\Exception\SorryTooManyPlayers;
 use TicTacToe\Engine\Domain\Model\Player\PlayerId;
 use TicTacToe\Engine\Domain\Model\Player\PlayerIdSet;
@@ -48,6 +49,15 @@ final class Game extends AggregateRoot
         );
 
         return $game;
+    }
+
+    public function playerMakeTurn(Turn $turn)
+    {
+        $this->board = $this->board->setCell($turn->position(), $turn->cell());
+
+        $this->record(
+            new PlayerTurnPlayed($turn)
+        );
     }
 
     public function id(): GameId

@@ -79,9 +79,9 @@ final class Player extends AggregateRoot
         return (string) $this->name;
     }
 
-    public function playingToken(): string
+    public function playingToken(): PlayerToken
     {
-        return (string) $this->playingToken;
+        return $this->playingToken;
     }
 
     public function id(): PlayerId

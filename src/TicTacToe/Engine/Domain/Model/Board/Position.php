@@ -7,7 +7,7 @@ use TicTacToe\Engine\Domain\Model\Board\Exception\SorryInvalidPosition;
 
 final class Position
 {
-    public const Valid_Positions = [
+    private const VALID_POSITIONS = [
         0, 1, 2, 3, 4, 5, 6, 7, 8
     ];
 
@@ -16,9 +16,7 @@ final class Position
 
     public function __construct(int $position)
     {
-        if (!in_array($position, self::Valid_Positions, true)) {
-            throw new SorryInvalidPosition('Out of boundary position.');
-        }
+        self::isValid($position);
 
         $this->position = $position;
     }
@@ -26,5 +24,19 @@ final class Position
     public function position(): int
     {
         return $this->position;
+    }
+
+    public static function positions(): array
+    {
+        return self::VALID_POSITIONS;
+    }
+
+    public static function isValid(int $position): bool
+    {
+        if (!in_array($position, self::VALID_POSITIONS, true)) {
+            throw new SorryInvalidPosition('Out of boundary position.');
+        }
+
+        return true;
     }
 }

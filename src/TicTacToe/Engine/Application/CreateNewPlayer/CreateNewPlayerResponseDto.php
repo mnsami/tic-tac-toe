@@ -24,7 +24,7 @@ final class CreateNewPlayerResponseDto implements DataTransformer
     public function __construct(Player $player)
     {
         $this->playerId = (string) $player->id();
-        $this->playerToken = $player->playingToken();
+        $this->playerToken = (string) $player->playingToken();
         $this->playerName = $player->name();
         $this->createdAt = $player->createdAt();
     }

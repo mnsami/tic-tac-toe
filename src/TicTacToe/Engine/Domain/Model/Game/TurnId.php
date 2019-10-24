@@ -5,7 +5,7 @@ namespace TicTacToe\Engine\Domain\Model\Game;
 
 use Ramsey\Uuid\Uuid;
 
-final class MoveId
+final class TurnId
 {
     /** @var string */
     private $id;
@@ -15,7 +15,7 @@ final class MoveId
         $this->id = null === $id ? Uuid::uuid4()->toString() : $id;
     }
 
-    public function equals(MoveId $moveId)
+    public function equals(TurnId $moveId)
     {
         return $this->id === (string)$moveId;
     }

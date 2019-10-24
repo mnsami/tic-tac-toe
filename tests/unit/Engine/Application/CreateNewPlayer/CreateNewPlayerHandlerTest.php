@@ -42,7 +42,7 @@ class CreateNewPlayerHandlerTest extends TestCase
         $playerDto = $this->handler->handle($command);
         $retreivedPlayer = $this->playerRepository->ofId(new PlayerId($playerDto->playerId()));
         self::assertEquals($retreivedPlayer->name(), $playerDto->playerName());
-        self::assertEquals($retreivedPlayer->playingToken(), $playerDto->playerToken());
+        self::assertEquals((string) $retreivedPlayer->playingToken(), $playerDto->playerToken());
     }
 
     public function testItThrowsSorryWrongCommandWhenWrongCommandPassed()

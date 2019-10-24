@@ -10,7 +10,7 @@ final class Board
 {
     private const BOARD_SIZE_3 = 3;
 
-    /** @var [][] */
+    /** @var CellSet */
     private $cellSet;
 
     /** @var int */
@@ -33,11 +33,26 @@ final class Board
 
     private function initBoard()
     {
-        foreach (range(0, $this->size - 1) as $row) {
-            foreach (range(0, $this->size - 1) as $col) {
-                $this->cellSet[$row][$col] = Cell::empty();
+        foreach (Position::positions() as $position) {
+            $this->cellSet[$position] = Cell::empty();
+        }
+    }
+
+    public function isFull(): bool
+    {
+        /** @var Cell $cell */
+        foreach ($this->cellSet as $cell) {
+            if ($cell->isEmpty()) {
+                return false;
             }
         }
+
+        return true;
+    }
+
+    public function setCell(Position $position, Cell $cell): Board
+    {
+        $this->cellSet[$position->position()] = $cell;
     }
 
     public static function create3By3Board(): Board
