@@ -1,16 +1,25 @@
-FROM php:7-cli
+FROM php:7-cli-alpine
 
-RUN apt-get update && apt-get -y install \
-    curl \
-    zip \
-    unzip \
-    vim
-RUN pecl install xdebug
-RUN docker-php-ext-enable xdebug
-RUN rm -rf /var/lib/apt/lists/*
+RUN apk update \
+    && apk add git \
+        curl \
+        zip \
+        unzip \
+        vim
+
+RUN apk add --no-cache $PHPIZE_DEPS \
+    && pecl install -f xdebug \
+    && docker-php-ext-enable xdebug \
+    && rm -rf /var/lib/apt/lists/*
 
 # Install Composer
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-RUN composer --version
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
+    && composer --version
+
+# Set timezone
+ENV TIMEZONE=Etc/UCT
+RUN ln -snf /usr/share/zoneinfo/${TIMEZONE} /etc/localtime && echo ${TIMEZONE} > /etc/timezone \
+    && printf '[PHP]\ndate.timezone = "%s"\n', ${TIMEZONE} > /usr/local/etc/php/conf.d/tzone.ini \
+    && "date"
 
 WORKDIR /code

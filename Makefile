@@ -1,11 +1,14 @@
 COMPOSER ?= composer
 DOCKER_COMPOSE = docker-compose
 PROJECT = "TicTacToe."
+COMPOSE_PROJECT_NAME ?= $(notdir $(shell pwd))
+PHP_SERVICE = php
+PHP_CMD = php
 
 ifeq ($(RUNNER), travis)
 	CMD :=
 else
-	CMD := docker-compose exec php
+	CMD := docker-compose exec $(PHP_SERVICE)
 endif
 
 all: container-up clear composer lint-composer lint-php  phpcs tests
@@ -16,7 +19,7 @@ lint-composer:
 
 lint-php:
 	@echo "\n==> Validating all php files:"
-	@find src -type f -name \*.php | while read file; do php -l "$$file" || exit 1; done
+	$(CMD) find src tests -type f -iname '*php' -exec $(PHP_CMD) -l {} \;
 
 composer:
 	@echo "\n==> Running composer install, runner $(RUNNER)"
@@ -49,11 +52,15 @@ container-down:
 	@echo "\n==> Removing docker container"
 	$(DOCKER_COMPOSE) down
 
+container-remove:
+	@echo "\n==> Removing docker container(s)"
+	$(DOCKER_COMPOSE) rm
+
 container-up:
 	@echo "\n==> Docker container building and starting ..."
 	$(DOCKER_COMPOSE) up --build -d
 
-tear-down: clear container-stop container-down
+tear-down: clear container-stop container-down container-remove
 
 
-.PHONY: lint-php lint-composer phpcs phpcbf composer clear tests coverage container-up static-analysis container-stop container-down
+.PHONY: lint-php lint-composer phpcs phpcbf composer clear tests coverage container-up container-stop container-down container-remove
