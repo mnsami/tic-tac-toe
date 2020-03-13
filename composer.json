@@ -10,14 +10,14 @@
         }
     ],
     "require": {
-        "php": ">=7.2",
-        "ramsey/uuid": "^3.8",
-        "squizlabs/php_codesniffer": "2.*"
+        "php": ">=7.4",
+        "ramsey/uuid": "^3.8"
     },
     "require-dev": {
         "phpstan/phpstan": "^0.10.5",
         "phpstan/phpstan-doctrine": "^0.10.0",
-        "phpunit/phpunit": "^7"
+        "phpunit/phpunit": "^7",
+        "squizlabs/php_codesniffer": "^3.5"
     },
     "autoload": {
         "psr-0": {
@@ -32,7 +32,7 @@
     "config": {
         "bin-dir": "bin",
         "platform": {
-            "php": "7.2"
+            "php": "7.4"
         },
         "sort-packages": true
     }
