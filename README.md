@@ -8,7 +8,7 @@ A php-cli Tic-Tac-Toe simple two players game.
 
 ### Requirements
 
-1. `php >= 7.2`
+1. `php >= 8`
 2. `Docker`
 
 ### Installation
