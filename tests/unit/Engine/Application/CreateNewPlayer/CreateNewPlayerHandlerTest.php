@@ -15,13 +15,11 @@ use unit\TicTacToe\WrongCommand;
 
 class CreateNewPlayerHandlerTest extends TestCase
 {
-    /** @var CreateNewPlayerHandler */
-    private $handler;
+    private CreateNewPlayerHandler $handler;
 
-    /** @var InMemoryPlayerRepository */
-    private $playerRepository;
+    private InMemoryPlayerRepository $playerRepository;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->playerRepository = new InMemoryPlayerRepository();
         $this->handler = new CreateNewPlayerHandler(
@@ -29,23 +27,23 @@ class CreateNewPlayerHandlerTest extends TestCase
         );
     }
 
-    public function testItHandlesCorrectClass()
+    public function testItHandlesCorrectClass(): void
     {
         self::assertEquals(CreateNewPlayerCommand::class, $this->handler->handles());
     }
 
-    public function testItCanCreateANewPlayer()
+    public function testItCanCreateANewPlayer(): void
     {
         $command = $this->createCommand();
 
         /** @var CreateNewPlayerResponseDto $playerDto */
         $playerDto = $this->handler->handle($command);
-        $retreivedPlayer = $this->playerRepository->ofId(new PlayerId($playerDto->playerId()));
-        self::assertEquals($retreivedPlayer->name(), $playerDto->playerName());
-        self::assertEquals((string) $retreivedPlayer->playingToken(), $playerDto->playerToken());
+        $retrievedPlayer = $this->playerRepository->ofId(new PlayerId($playerDto->playerId()));
+        self::assertEquals($retrievedPlayer->name(), $playerDto->playerName());
+        self::assertEquals((string) $retrievedPlayer->playingToken(), $playerDto->playerToken());
     }
 
-    public function testItThrowsSorryWrongCommandWhenWrongCommandPassed()
+    public function testItThrowsSorryWrongCommandWhenWrongCommandPassed(): void
     {
         $command = new WrongCommand();
 
@@ -53,7 +51,7 @@ class CreateNewPlayerHandlerTest extends TestCase
         $this->handler->handle($command);
     }
 
-    private function createCommand(string $name = 'player', string $token = 'x')
+    private function createCommand(string $name = 'player', string $token = 'x'): CreateNewPlayerCommand
     {
         return new CreateNewPlayerCommand($name, $token);
     }

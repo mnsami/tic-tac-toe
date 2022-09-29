@@ -8,8 +8,7 @@ use TicTacToe\Engine\Domain\Model\Player\PlayerToken;
 
 final class Cell
 {
-    /** @var string */
-    private $value;
+    private string $value;
 
     public function __construct(string $value = '')
     {
@@ -18,7 +17,7 @@ final class Cell
 
     public function __toString(): string
     {
-        return (string) $this->value;
+        return $this->value;
     }
 
     public function isEmpty(): bool

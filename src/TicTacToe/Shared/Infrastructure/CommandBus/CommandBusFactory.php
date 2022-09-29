@@ -12,7 +12,8 @@ use TicTacToe\Shared\Infrastructure\CommandBus\Exception\SorryCommandHandlerNotF
 
 final class CommandBusFactory implements CommandBus
 {
-    private $commandHandlers;
+    /** @var array<string, CommandHandler>  */
+    private array $commandHandlers;
 
     public function __construct()
     {

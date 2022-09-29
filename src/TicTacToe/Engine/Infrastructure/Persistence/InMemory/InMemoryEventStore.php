@@ -9,10 +9,24 @@ use TicTacToe\Shared\Infrastructure\EventStore;
 
 final class InMemoryEventStore implements EventStore
 {
-    private $events = [];
+    /** @var Event[] */
+    private array $events;
 
-    public function store(Event $event)
+    public function __construct(Event ...$events)
+    {
+        $this->events = $events;
+    }
+
+    public function store(Event $event): void
     {
         $this->events[] = unserialize(serialize($event));
+    }
+
+    /**
+     * @return Event[]
+     */
+    public function events(): array
+    {
+        return $this->events;
     }
 }

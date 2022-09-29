@@ -6,14 +6,7 @@ namespace TicTacToe\Engine\Presentation;
 
 interface Input
 {
-    /**
-     * @param bool $allowEmpty
-     * @return string
-     */
-    public function readString($allowEmpty = false): string;
+    public function readString(bool $allowEmpty = false): string;
 
-    /**
-     * @return int
-     */
     public function readInteger(): int;
 }

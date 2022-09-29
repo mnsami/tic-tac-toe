@@ -44,6 +44,10 @@ tests:
 	@echo "\n==> Running tests"
 	$(CMD) bin/phpunit
 
+stan:
+	@echo "\n==> Running stan for analysis"
+	$(CMD) bin/phpstan analyse --memory-limit=-1 src
+
 container-stop:
 	@echo "\n==> Stopping docker container"
 	$(DOCKER_COMPOSE) stop

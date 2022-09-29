@@ -8,3 +8,4 @@ services:
     restart: on-failure
     volumes:
       - ./:/code
+      - ./docker/php-cli/php.ini:/usr/local/etc/php/php.ini:ro

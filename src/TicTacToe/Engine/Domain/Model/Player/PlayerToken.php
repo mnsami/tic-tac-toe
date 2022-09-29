@@ -8,8 +8,7 @@ use TicTacToe\Engine\Domain\Model\Player\Exception\SorryInvalidPlayerToken;
 
 final class PlayerToken
 {
-    /** @var string */
-    private $token;
+    private string $token;
 
     private const X_TOKEN = 'x';
     private const Y_TOKEN = 'y';
@@ -18,6 +17,9 @@ final class PlayerToken
         self::Y_TOKEN,
     ];
 
+    /**
+     * @throws SorryInvalidPlayerToken
+     */
     public function __construct(string $token)
     {
         if (!in_array(strtolower($token), self::ALLOWED_TOKENS)) {

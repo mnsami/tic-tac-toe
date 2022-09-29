@@ -9,8 +9,7 @@ use TicTacToe\Shared\Domain\Model\Event;
 
 final class PlayerCreated implements Event
 {
-    /** @var Player */
-    private $player;
+    private Player $player;
 
     public function __construct(Player $player)
     {
@@ -33,7 +32,7 @@ final class PlayerCreated implements Event
         return [
             'playerId' => (string) $this->player->id(),
             'playerName' => $this->player->name(),
-            'playerToken' => $this->player->playingToken(),
+            'playerToken' => (string) $this->player->playingToken(),
             'createdAt' => $this->player->createdAt()->format(\DateTimeImmutable::ATOM)
         ];
     }

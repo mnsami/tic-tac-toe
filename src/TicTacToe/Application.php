@@ -2,10 +2,6 @@
 
 namespace TicTacToe;
 
-use TicTacToe\Board;
-use TicTacToe\IO\IOHandler;
-use TicTacToe\Player\HumanPlayer;
-
 class Application
 {
     /**

@@ -8,8 +8,7 @@ use TicTacToe\Shared\Domain\Model\Event;
 
 final class PlayerTurnPlayed implements Event
 {
-    /** @var Turn */
-    private $turn;
+    private Turn $turn;
 
     public function __construct(Turn $turn)
     {
@@ -25,7 +24,7 @@ final class PlayerTurnPlayed implements Event
     }
 
     /**
-     * @inheritDoc
+     * @return array<string, string|int>
      */
     public function toArray(): array
     {

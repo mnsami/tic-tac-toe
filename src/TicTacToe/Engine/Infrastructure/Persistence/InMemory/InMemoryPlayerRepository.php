@@ -10,10 +10,10 @@ use TicTacToe\Engine\Domain\Model\Player\PlayerRepository;
 
 class InMemoryPlayerRepository implements PlayerRepository
 {
-    /** @var Player[] */
-    private $players = [];
+    /** @var array<string, Player> */
+    private array $players = [];
 
-    public function add(Player $player)
+    public function add(Player $player): void
     {
         $this->players[(string)$player->id()] = $player;
     }
@@ -33,7 +33,7 @@ class InMemoryPlayerRepository implements PlayerRepository
     }
 
     /**
-     * @return Player[]
+     * @return array<string, Player>
      */
     public function players(): array
     {

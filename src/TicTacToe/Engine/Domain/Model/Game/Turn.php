@@ -9,35 +9,36 @@ use TicTacToe\Engine\Domain\Model\Player\Player;
 
 final class Turn
 {
+    private GameId $gameId;
 
-    private $gameId;
+    private TurnId $moveId;
 
-    /** @var TurnId */
-    private $moveId;
+    private Cell $cell;
 
-    /** @var Cell */
-    private $cell;
+    private Player $madeBy;
 
-    /** @var Player */
-    private $madeBy;
+    private Position $position;
 
-    /** @var Position */
-    private $position;
-
-    /** @var \DateTimeImmutable */
-    private $createdAt;
+    private \DateTimeImmutable $createdAt;
 
     public function __construct(
+        GameId $gameId,
         TurnId $moveId,
         Cell $cell,
         Position $position,
         Player $madeBy
     ) {
+        $this->gameId = $gameId;
         $this->moveId = $moveId;
         $this->cell = $cell;
         $this->madeBy = $madeBy;
         $this->position = $position;
         $this->createdAt = new \DateTimeImmutable();
+    }
+
+    public function gameId(): GameId
+    {
+        return $this->gameId;
     }
 
     public function moveId(): TurnId

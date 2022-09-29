@@ -13,22 +13,22 @@ final class ConsoleOutput implements Output
     private const INFO = "\033[0mINFO: %s\n";
     private const WARNING = "\033[33mWarning: %s\n";
 
-    public function error(string $error)
+    public function error(string $error): void
     {
         echo sprintf(self::ERROR, $error);
     }
 
-    public function success(string $message)
+    public function success(string $message): void
     {
         echo sprintf(self::SUCCESS, $message);
     }
 
-    public function warning(string $message)
+    public function warning(string $message): void
     {
         echo sprintf(self::WARNING, $message);
     }
 
-    public function info(string $message)
+    public function info(string $message): void
     {
         echo sprintf(self::INFO, $message);
     }

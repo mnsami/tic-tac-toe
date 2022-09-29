@@ -4,12 +4,15 @@ declare(strict_types = 1);
 
 namespace TicTacToe\Engine\Domain\Model\Player;
 
-use Traversable;
+use Iterator;
 
+/**
+ * @implements \IteratorAggregate<PlayerId>
+ */
 class PlayerIdSet implements \Countable, \IteratorAggregate
 {
     /** @var PlayerId[] */
-    private $playerIds;
+    private array $playerIds;
 
     public function __construct(PlayerId ...$playerIds)
     {
@@ -21,19 +24,22 @@ class PlayerIdSet implements \Countable, \IteratorAggregate
     }
 
     /**
-     * @return array|PlayerId[]
+     * @return array<int, PlayerId>
      */
     public function toArray(): array
     {
         return $this->playerIds;
     }
 
-    public function getIterator(): \Traversable
+    /**
+     * @return Iterator<PlayerId>
+     */
+    public function getIterator(): Iterator
     {
         return new \ArrayIterator($this->toArray());
     }
 
-    public function count()
+    public function count(): int
     {
         return count($this->playerIds);
     }

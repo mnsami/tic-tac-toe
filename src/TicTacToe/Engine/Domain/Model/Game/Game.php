@@ -14,22 +14,23 @@ use TicTacToe\Shared\Domain\Model\AggregateRoot;
 
 final class Game extends AggregateRoot
 {
-    /** @var GameId */
-    private $id;
+    private GameId $id;
 
-    /** @var PlayerIdSet */
-    private $playerIds;
+    private PlayerIdSet $playerIds;
 
-    /** @var Board */
-    private $board;
+    private Board $board;
 
-    /** @var \DateTimeImmutable */
-    private $createdAt;
+    private \DateTimeImmutable $createdAt;
 
     public const MAX_PLAYERS = 2;
 
+    /**
+     * @throws SorryTooManyPlayers
+     */
     private function __construct(GameId $gameId, Board $board, PlayerId ...$playerIds)
     {
+        parent::__construct();
+
         if (count($playerIds) > self::MAX_PLAYERS) {
             throw new SorryTooManyPlayers("Only " . self::MAX_PLAYERS . " players allowed.");
         }
@@ -40,7 +41,7 @@ final class Game extends AggregateRoot
         $this->createdAt = new \DateTimeImmutable();
     }
 
-    public static function start(GameId $gameId, Board $board, PlayerId ...$playerIds)
+    public static function start(GameId $gameId, Board $board, PlayerId ...$playerIds): self
     {
         $game = new self($gameId, $board, ...$playerIds);
 
@@ -51,9 +52,9 @@ final class Game extends AggregateRoot
         return $game;
     }
 
-    public function playerMakeTurn(Turn $turn)
+    public function playerMakeTurn(Turn $turn): void
     {
-        $this->board = $this->board->setCell($turn->position(), $turn->cell());
+        $this->board->setCell($turn->position(), $turn->cell());
 
         $this->record(
             new PlayerTurnPlayed($turn)

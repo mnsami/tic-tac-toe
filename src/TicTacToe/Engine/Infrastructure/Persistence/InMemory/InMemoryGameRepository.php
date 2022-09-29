@@ -11,7 +11,7 @@ use TicTacToe\Engine\Domain\Model\Game\GameRepository;
 class InMemoryGameRepository implements GameRepository
 {
     /** @var Game[] */
-    private $games = [];
+    private array $games = [];
     /**
      * @param Game $game
      * @return void
@@ -43,7 +43,7 @@ class InMemoryGameRepository implements GameRepository
     }
 
     /**
-     * @return array
+     * @return array<string, Game>
      */
     public function games(): array
     {

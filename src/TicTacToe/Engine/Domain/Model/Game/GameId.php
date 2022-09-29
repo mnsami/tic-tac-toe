@@ -8,15 +8,14 @@ use Ramsey\Uuid\Uuid;
 
 final class GameId
 {
-    /** @var string */
-    private $id;
+    private string $id;
 
     public function __construct(?string $id = null)
     {
         $this->id = null === $id ? Uuid::uuid4()->toString() : $id;
     }
 
-    public function equals(GameId $gameId)
+    public function equals(GameId $gameId): bool
     {
         return $this->id === (string) $gameId;
     }

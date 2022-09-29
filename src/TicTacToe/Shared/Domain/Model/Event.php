@@ -16,7 +16,7 @@ interface Event
     /**
      * Return event data as array
      *
-     * @return array
+     * @return array<string, string>
      */
     public function toArray(): array;
 

@@ -8,59 +8,33 @@ use TicTacToe\Engine\Presentation\Input;
 
 final class ConsoleInput implements Input
 {
-    /**
-     * @inheritDoc
-     */
-    public function readString($allowEmpty = false): string
+    public function readString(bool $allowEmpty = false): string
     {
         $input = $this->readStringFromStream();
         if (empty($input) && !$allowEmpty) {
             throw new \InvalidArgumentException("Input cannot be empty.");
         }
-        if (!is_string($input)) {
-            throw new \InvalidArgumentException("Input is not a valid 'string'.");
-        }
 
         return trim($input);
     }
 
-    /**
-     * @inheritDoc
-     */
     public function readInteger(): int
     {
         $input = $this->readIntegerFromStream();
         if (!empty($input)) {
-            if (!is_integer($input)) {
-                throw new \InvalidArgumentException("Input is not a valid 'integer'.");
-            }
+            throw new \InvalidArgumentException("Input cannot be empty.");
         }
 
-        $input = intval($input);
         return $input;
     }
 
-    /**
-     * @codeCoverageIgnore
-     *
-     * Read string from stream
-     *
-     * @return string
-     */
-    protected function readStringFromStream()
+    protected function readStringFromStream(): string
     {
-        $string = trim(fgets(STDIN));
-        return $string;
+        $stream = fgets(STDIN);
+        return trim($stream !== false ? $stream : '');
     }
 
-    /**
-     * @codeCoverageIgnore
-     *
-     * Return integer from stream
-     *
-     * @return integer
-     */
-    protected function readIntegerFromStream()
+    protected function readIntegerFromStream(): int
     {
         fscanf(STDIN, "%d\n", $number);
         return $number;

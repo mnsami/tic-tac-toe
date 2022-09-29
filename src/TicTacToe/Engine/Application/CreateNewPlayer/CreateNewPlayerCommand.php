@@ -8,11 +8,9 @@ use TicTacToe\Shared\Application\Command;
 
 final class CreateNewPlayerCommand implements Command
 {
-    /** @var string */
-    private $name;
+    private string $name;
 
-    /** @var string */
-    private $token;
+    private string $token;
 
     public function __construct(string $name, string $token)
     {

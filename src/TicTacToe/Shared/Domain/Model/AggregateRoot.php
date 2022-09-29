@@ -6,22 +6,28 @@ namespace TicTacToe\Shared\Domain\Model;
 
 abstract class AggregateRoot
 {
-    private $events = [];
+    /** @var Event[] */
+    private array $events;
+
+    public function __construct()
+    {
+        $this->events = [];
+    }
 
     /**
-     * @return array|Event[]
+     * @return Event[]
      */
     public function getRecordedEvents(): array
     {
         return $this->events;
     }
 
-    public function resetRecordedEvents()
+    public function resetRecordedEvents(): void
     {
         $this->events = [];
     }
 
-    protected function record(Event $event)
+    protected function record(Event $event): void
     {
         $this->events[] = $event;
     }

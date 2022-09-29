@@ -1,2 +1,6 @@
-includes:
-  - config.level7.neon
+parameters:
+	level: 7
+	excludePaths:
+	    # only because of the refactoring
+	    - src/TicTacToe/Application.php
+	    - src/TicTacToe/Board.php

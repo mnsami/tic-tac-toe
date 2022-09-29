@@ -10,7 +10,7 @@ interface PlayerRepository
      * @param Player $player
      * @return void
      */
-    public function add(Player $player);
+    public function add(Player $player): void;
 
     /**
      * @param PlayerId $playerId

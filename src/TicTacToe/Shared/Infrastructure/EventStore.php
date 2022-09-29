@@ -8,5 +8,5 @@ use TicTacToe\Shared\Domain\Model\Event;
 
 interface EventStore
 {
-    public function store(Event $event);
+    public function store(Event $event): void;
 }

@@ -24,7 +24,7 @@ interface GameRepository
     public function nextIdentity(): GameId;
 
     /**
-     * @return array
+     * @return array<string, Game>
      */
     public function games(): array;
 }

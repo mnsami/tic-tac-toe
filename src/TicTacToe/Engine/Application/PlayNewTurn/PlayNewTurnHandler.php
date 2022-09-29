@@ -17,18 +17,16 @@ use TicTacToe\Engine\Domain\Model\Player\PlayerRepository;
 use TicTacToe\Shared\Application\Command;
 use TicTacToe\Shared\Application\CommandHandler;
 use TicTacToe\Shared\Application\DataTransformer;
+use TicTacToe\Shared\Application\EmptyResponseDto;
 use TicTacToe\Shared\Application\Exception\SorryWrongCommand;
 
 final class PlayNewTurnHandler implements CommandHandler
 {
-    /** @var TurnRepository */
-    private $turnRepository;
+    private TurnRepository $turnRepository;
 
-    /** @var PlayerRepository */
-    private $playerRepository;
+    private PlayerRepository $playerRepository;
 
-    /** @var GameRepository */
-    private $gameRepository;
+    private GameRepository $gameRepository;
 
     public function __construct(
         TurnRepository $turnRepository,
@@ -70,6 +68,7 @@ final class PlayNewTurnHandler implements CommandHandler
         }
 
         $turn = new Turn(
+            $game->id(),
             new TurnId(),
             Cell::createFromPlayerToken($player->playingToken()),
             new Position($command->position()),
@@ -81,5 +80,7 @@ final class PlayNewTurnHandler implements CommandHandler
         );
 
         $this->turnRepository->add($turn);
+
+        return new EmptyResponseDto();
     }
 }

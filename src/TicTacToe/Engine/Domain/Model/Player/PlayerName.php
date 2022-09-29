@@ -9,12 +9,15 @@ use TicTacToe\Engine\Domain\Model\Player\Exception\SorryPlayerNameIsTooShort;
 
 final class PlayerName
 {
-    /** @var string */
-    private $name;
+    private string $name;
 
     private const MAX_LENGTH = 15;
     private const MIN_LENGTH = 3;
 
+    /**
+     * @throws SorryPlayerNameIsTooLong
+     * @throws SorryPlayerNameIsTooShort
+     */
     public function __construct(string $name)
     {
         if (strlen($name) < self::MIN_LENGTH) {

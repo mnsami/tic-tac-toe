@@ -9,17 +9,13 @@ use TicTacToe\Shared\Application\DataTransformer;
 
 final class CreateNewPlayerResponseDto implements DataTransformer
 {
-    /** @var string */
-    private $playerId;
+    private string $playerId;
 
-    /** @var string */
-    private $playerToken;
+    private string $playerToken;
 
-    /** @var string */
-    private $playerName;
+    private string $playerName;
 
-    /** @var \DateTimeImmutable */
-    private $createdAt;
+    private \DateTimeImmutable $createdAt;
 
     public function __construct(Player $player)
     {
@@ -50,7 +46,7 @@ final class CreateNewPlayerResponseDto implements DataTransformer
     }
 
     /**
-     * @return array
+     * @return array<string, string>
      */
     public function toArray(): array
     {

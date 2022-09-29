@@ -22,7 +22,7 @@ interface TurnRepository
     public function nextIdentity(): TurnId;
 
     /**
-     * @return array
+     * @return array<string, Turn>
      */
     public function turns(): array;
 }

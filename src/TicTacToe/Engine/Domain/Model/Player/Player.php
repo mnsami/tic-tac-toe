@@ -5,21 +5,20 @@ declare(strict_types = 1);
 namespace TicTacToe\Engine\Domain\Model\Player;
 
 use TicTacToe\Engine\Domain\Model\Player\Event\PlayerCreated;
+use TicTacToe\Engine\Domain\Model\Player\Exception\SorryInvalidPlayerToken;
+use TicTacToe\Engine\Domain\Model\Player\Exception\SorryPlayerNameIsTooLong;
+use TicTacToe\Engine\Domain\Model\Player\Exception\SorryPlayerNameIsTooShort;
 use TicTacToe\Shared\Domain\Model\AggregateRoot;
 
 final class Player extends AggregateRoot
 {
-    /** @var PlayerId */
-    private $id;
+    private PlayerId $id;
 
-    /** @var PlayerName */
-    private $name;
+    private PlayerName $name;
 
-    /** @var PlayerToken */
-    private $playingToken;
+    private PlayerToken $playingToken;
 
-    /** @var \DateTimeImmutable */
-    private $createdAt;
+    private \DateTimeImmutable $createdAt;
 
     private function __construct(PlayerId $id, PlayerName $name, PlayerToken $token)
     {
@@ -59,6 +58,11 @@ final class Player extends AggregateRoot
         return $player;
     }
 
+    /**
+     * @throws SorryPlayerNameIsTooLong
+     * @throws SorryPlayerNameIsTooShort
+     * @throws SorryInvalidPlayerToken
+     */
     public static function createPlayerWithToken(string $name, string $token): Player
     {
         $player = new self(

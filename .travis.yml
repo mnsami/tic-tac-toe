@@ -2,5 +2,5 @@ env:
   - RUNNER=travis
 language: php
 php:
-    - '7.4'
-install: make clear lint-composer lint-php composer phpcs tests
+    - '8'
+install: make clear lint-composer lint-php composer phpcs tests stan

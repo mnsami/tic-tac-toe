@@ -9,8 +9,7 @@ use TicTacToe\Shared\Domain\Model\Event;
 
 final class GameCreated implements Event
 {
-    /** @var Game */
-    private $game;
+    private Game $game;
 
     public function __construct(Game $game)
     {

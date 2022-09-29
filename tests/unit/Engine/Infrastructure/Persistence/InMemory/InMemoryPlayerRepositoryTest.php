@@ -13,10 +13,9 @@ use TicTacToe\Engine\Infrastructure\Persistence\InMemory\InMemoryPlayerRepositor
 
 class InMemoryPlayerRepositoryTest extends TestCase
 {
-    /** @var PlayerRepository */
-    private $repository;
+    private PlayerRepository $repository;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->repository = new InMemoryPlayerRepository();
     }

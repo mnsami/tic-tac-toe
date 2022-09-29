@@ -5,6 +5,7 @@ declare(strict_types = 1);
 namespace TicTacToe\Engine\Application\CreateNewGame;
 
 use TicTacToe\Engine\Domain\Model\Board\Board;
+use TicTacToe\Engine\Domain\Model\Board\Exception\SorryBoardSizeIsNotValid;
 use TicTacToe\Engine\Domain\Model\Game\Game;
 use TicTacToe\Engine\Domain\Model\Game\GameId;
 use TicTacToe\Engine\Domain\Model\Game\GameRepository;
@@ -16,8 +17,7 @@ use TicTacToe\Shared\Application\Exception\SorryWrongCommand;
 
 final class CreateNewGameHandler implements CommandHandler
 {
-    /** @var GameRepository */
-    private $gameRepository;
+    private GameRepository $gameRepository;
 
     public function __construct(GameRepository $gameRepository)
     {
@@ -33,7 +33,9 @@ final class CreateNewGameHandler implements CommandHandler
     }
 
     /**
+     * @param CreateNewGameCommand $command
      * @inheritDoc
+     * @throws SorryBoardSizeIsNotValid
      */
     public function handle(Command $command): DataTransformer
     {

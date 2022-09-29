@@ -11,8 +11,7 @@ final class Position
         0, 1, 2, 3, 4, 5, 6, 7, 8
     ];
 
-    /** @var int */
-    private $position;
+    private int $position;
 
     public function __construct(int $position)
     {
@@ -26,6 +25,9 @@ final class Position
         return $this->position;
     }
 
+    /**
+     * @return array<int>
+     */
     public static function positions(): array
     {
         return self::VALID_POSITIONS;

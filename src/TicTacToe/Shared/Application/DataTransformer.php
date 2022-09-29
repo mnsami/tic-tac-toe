@@ -7,7 +7,7 @@ namespace TicTacToe\Shared\Application;
 interface DataTransformer
 {
     /**
-     * @return array
+     * @return array<string, string>
      */
     public function toArray(): array;
 }

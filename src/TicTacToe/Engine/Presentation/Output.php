@@ -6,11 +6,11 @@ namespace TicTacToe\Engine\Presentation;
 
 interface Output
 {
-    public function error(string $error);
+    public function error(string $error): void;
 
-    public function success(string $message);
+    public function success(string $message): void;
 
-    public function warning(string $message);
+    public function warning(string $message): void;
 
-    public function info(string $message);
+    public function info(string $message): void;
 }

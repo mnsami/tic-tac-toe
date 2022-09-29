@@ -3,3 +3,4 @@ coverage/*
 bin/*
 
 !bin/.gitkeep
+.phpunit.result.cache

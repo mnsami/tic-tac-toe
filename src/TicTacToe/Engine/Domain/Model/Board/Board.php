@@ -10,18 +10,21 @@ final class Board
 {
     private const BOARD_SIZE_3 = 3;
 
-    /** @var CellSet */
-    private $cellSet;
+    /** @var array<int, Cell> */
+    private array $cells;
 
-    /** @var int */
-    private $size;
+    private int $size;
 
+    /**
+     * @throws SorryBoardSizeIsNotValid
+     */
     public function __construct(int $size)
     {
         if ($size != self::BOARD_SIZE_3) {
             throw new SorryBoardSizeIsNotValid("Only allowed size for board is: " . self::BOARD_SIZE_3);
         }
 
+        $this->cells = [];
         $this->size = $size;
         $this->initBoard();
     }
@@ -31,17 +34,18 @@ final class Board
         return $this->size;
     }
 
-    private function initBoard()
+    private function initBoard(): void
     {
+        /** @var int $position */
         foreach (Position::positions() as $position) {
-            $this->cellSet[$position] = Cell::empty();
+            $this->cells[$position] = Cell::empty();
         }
     }
 
     public function isFull(): bool
     {
         /** @var Cell $cell */
-        foreach ($this->cellSet as $cell) {
+        foreach ($this->cells as $cell) {
             if ($cell->isEmpty()) {
                 return false;
             }
@@ -50,9 +54,9 @@ final class Board
         return true;
     }
 
-    public function setCell(Position $position, Cell $cell): Board
+    public function setCell(Position $position, Cell $cell): void
     {
-        $this->cellSet[$position->position()] = $cell;
+        $this->cells[$position->position()] = $cell;
     }
 
     public static function create3By3Board(): Board

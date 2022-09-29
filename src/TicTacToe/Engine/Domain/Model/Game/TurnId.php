@@ -7,15 +7,14 @@ use Ramsey\Uuid\Uuid;
 
 final class TurnId
 {
-    /** @var string */
-    private $id;
+    private string $id;
 
     public function __construct(?string $id = null)
     {
         $this->id = null === $id ? Uuid::uuid4()->toString() : $id;
     }
 
-    public function equals(TurnId $moveId)
+    public function equals(TurnId $moveId): bool
     {
         return $this->id === (string)$moveId;
     }

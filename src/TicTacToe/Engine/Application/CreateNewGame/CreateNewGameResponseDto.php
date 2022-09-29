@@ -5,21 +5,19 @@ declare(strict_types = 1);
 namespace TicTacToe\Engine\Application\CreateNewGame;
 
 use TicTacToe\Engine\Domain\Model\Game\Game;
+use TicTacToe\Engine\Domain\Model\Player\PlayerId;
 use TicTacToe\Shared\Application\DataTransformer;
 
 final class CreateNewGameResponseDto implements DataTransformer
 {
-    /** @var string */
-    private $gameId;
+    private string $gameId;
 
-    /** @var int */
-    private $boardSize;
+    private int $boardSize;
 
-    /** @var [] */
-    private $playerIds;
+    /** @var PlayerId[]  */
+    private array $playerIds;
 
-    /** @var \DateTimeImmutable */
-    private $createdAt;
+    private \DateTimeImmutable $createdAt;
 
     public function __construct(Game $game)
     {
@@ -39,6 +37,9 @@ final class CreateNewGameResponseDto implements DataTransformer
         return $this->boardSize;
     }
 
+    /**
+     * @return PlayerId[]
+     */
     public function playerIds(): array
     {
         return $this->playerIds;
@@ -50,7 +51,7 @@ final class CreateNewGameResponseDto implements DataTransformer
     }
 
     /**
-     * @return array
+     * @return array<string, array<PlayerId>|int|string>
      */
     public function toArray(): array
     {
