@@ -25,6 +25,8 @@ composer:
 	@echo "\n==> Running composer install, runner $(RUNNER)"
 	$(CMD) $(COMPOSER) install
 
+lint: lint-composer lint-php
+
 clear:
 	$(CMD) rm -rf vendor
 	$(CMD) rm -rf bin/php*

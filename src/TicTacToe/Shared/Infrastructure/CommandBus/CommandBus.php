@@ -2,11 +2,11 @@
 
 declare(strict_types = 1);
 
-namespace TicTacToe\Shared\Infrastructure;
+namespace TicTacToe\Shared\Infrastructure\CommandBus;
 
 use TicTacToe\Shared\Application\Command;
-use TicTacToe\Shared\Application\CommandHandler;
 use TicTacToe\Shared\Application\DataTransformer;
+use TicTacToe\Shared\Domain\Model\Event;
 
 interface CommandBus
 {
@@ -17,8 +17,7 @@ interface CommandBus
     public function handle(Command $command): DataTransformer;
 
     /**
-     * @param Command $command
-     * @param CommandHandler $commandHandler
+     * @return Event[]
      */
-    public function register(Command $command, CommandHandler $commandHandler): void;
+    public function events(): array;
 }

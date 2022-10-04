@@ -9,4 +9,9 @@ use TicTacToe\Shared\Domain\Model\Event;
 interface EventStore
 {
     public function store(Event $event): void;
+
+    /**
+     * @return Event[]
+     */
+    public function events(): array;
 }

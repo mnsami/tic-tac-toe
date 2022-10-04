@@ -3,13 +3,10 @@ declare(strict_types=1);
 
 namespace TicTacToe\Engine\Application\PlayNewTurn;
 
-use TicTacToe\Engine\Domain\Model\Board\Cell;
 use TicTacToe\Engine\Domain\Model\Board\Position;
 use TicTacToe\Engine\Domain\Model\Game\Exception\SorryGameNotFound;
 use TicTacToe\Engine\Domain\Model\Game\GameId;
 use TicTacToe\Engine\Domain\Model\Game\GameRepository;
-use TicTacToe\Engine\Domain\Model\Game\Turn;
-use TicTacToe\Engine\Domain\Model\Game\TurnId;
 use TicTacToe\Engine\Domain\Model\Game\TurnRepository;
 use TicTacToe\Engine\Domain\Model\Player\Exception\SorryPlayerNotFound;
 use TicTacToe\Engine\Domain\Model\Player\PlayerId;
