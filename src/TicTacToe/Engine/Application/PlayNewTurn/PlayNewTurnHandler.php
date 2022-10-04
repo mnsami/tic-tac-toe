@@ -67,15 +67,9 @@ final class PlayNewTurnHandler implements CommandHandler
             throw new SorryGameNotFound("Game of Id {$gameId} not found.");
         }
 
-        $turn = new Turn(
-            $game->id(),
-            new TurnId(),
-            Cell::createFromPlayerToken($player->playingToken()),
-            new Position($command->position()),
-            $player
-        );
+        $turn = $player->play($game->id(), new Position($command->position()));
 
-        $game->playerMakeTurn(
+        $game->setBoardPiece(
             $turn
         );
 

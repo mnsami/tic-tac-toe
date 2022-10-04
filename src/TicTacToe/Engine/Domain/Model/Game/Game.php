@@ -52,13 +52,9 @@ final class Game extends AggregateRoot
         return $game;
     }
 
-    public function playerMakeTurn(Turn $turn): void
+    public function setBoardPiece(Turn $turn): void
     {
         $this->board->setCell($turn->position(), $turn->cell());
-
-        $this->record(
-            new PlayerTurnPlayed($turn)
-        );
     }
 
     public function id(): GameId

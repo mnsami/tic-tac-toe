@@ -4,6 +4,12 @@ declare(strict_types = 1);
 
 namespace TicTacToe\Engine\Domain\Model\Player;
 
+use TicTacToe\Engine\Domain\Model\Board\Cell;
+use TicTacToe\Engine\Domain\Model\Board\Position;
+use TicTacToe\Engine\Domain\Model\Game\Event\PlayerTurnPlayed;
+use TicTacToe\Engine\Domain\Model\Game\GameId;
+use TicTacToe\Engine\Domain\Model\Game\Turn;
+use TicTacToe\Engine\Domain\Model\Game\TurnId;
 use TicTacToe\Engine\Domain\Model\Player\Event\PlayerCreated;
 use TicTacToe\Engine\Domain\Model\Player\Exception\SorryInvalidPlayerToken;
 use TicTacToe\Engine\Domain\Model\Player\Exception\SorryPlayerNameIsTooLong;
@@ -96,5 +102,22 @@ final class Player extends AggregateRoot
     public function createdAt(): \DateTimeImmutable
     {
         return $this->createdAt;
+    }
+
+    public function play(GameId $gameId, Position $position): Turn
+    {
+        $turn = new Turn(
+            $gameId,
+            new TurnId(),
+            Cell::createFromPlayerToken($this->playingToken),
+            $position,
+            $this
+        );
+
+        $this->record(
+            new PlayerTurnPlayed($turn)
+        );
+
+        return $turn;
     }
 }
