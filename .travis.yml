@@ -1,3 +1,5 @@
+env:
+  - RUNNER=travis
 language: php
 php:
     - '8'
