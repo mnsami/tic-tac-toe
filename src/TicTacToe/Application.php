@@ -182,11 +182,17 @@ class Application
         $this->ioHandler->writeLine($this->getBorderedStringWithPadding("#", "#"), IOHandler::SUCCESS);
         $this->ioHandler->writeLine($this->getBorderedStringWithPadding(" ", " "), IOHandler::SUCCESS);
         $this->ioHandler->writeLine($this->getBorderedStringWithPadding("Hoorrraaayyy !"), IOHandler::SUCCESS);
-        $this->ioHandler->writeLine($this->getBorderedStringWithPadding($winner->getName() . " won!"), IOHandler::SUCCESS);
+        $this->ioHandler->writeLine(
+            $this->getBorderedStringWithPadding($winner->getName() . " won!"),
+            IOHandler::SUCCESS
+        );
         foreach ($this->board->getBoard() as $boardRow) {
             $this->ioHandler->writeLine($this->getBorderedStringWithPadding($boardRow), IOHandler::SUCCESS);
         }
-        $this->ioHandler->writeLine($this->getBorderedStringWithPadding("Thank you for playing Tic-Tac-Toe"), IOHandler::SUCCESS);
+        $this->ioHandler->writeLine(
+            $this->getBorderedStringWithPadding("Thank you for playing Tic-Tac-Toe"),
+            IOHandler::SUCCESS
+        );
         $this->ioHandler->writeLine($this->getBorderedStringWithPadding(" ", " "), IOHandler::SUCCESS);
         $this->ioHandler->writeLine($this->getBorderedStringWithPadding("#", "#"), IOHandler::SUCCESS);
     }
