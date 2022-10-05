@@ -19,7 +19,7 @@ lint-composer:
 
 lint-php:
 	@echo "\n==> Validating all php files:"
-	$(CMD) find src tests -type f -iname '*php' -exec $(PHP_CMD) -l {} \;
+	$(CMD) find src -type f -iname '*php' -exec $(PHP_CMD) -l {} \;
 
 composer:
 	@echo "\n==> Running composer install, runner $(RUNNER)"
