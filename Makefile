@@ -5,7 +5,7 @@ COMPOSE_PROJECT_NAME ?= $(notdir $(shell pwd))
 PHP_SERVICE = php
 PHP_CMD = php
 
-ifeq ($(RUNNER), travis)
+ifeq ($(RUNNER), PIPELINE)
 	CMD :=
 else
 	CMD := docker-compose exec $(PHP_SERVICE)
