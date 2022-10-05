@@ -1,5 +1,7 @@
 # tic-tac-toe
 
+[![Testing](https://github.com/mnsami/tic-tac-toe/actions/workflows/main.yml/badge.svg)](https://github.com/mnsami/tic-tac-toe/actions/workflows/main.yml)
+
 ### Description
 
 A php-cli Tic-Tac-Toe simple two players game.
