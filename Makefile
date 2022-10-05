@@ -33,22 +33,22 @@ clear:
 
 phpcs:
 	@echo "\n==> Checking style guidelines"
-	$(CMD) bin/phpcs --standard=phpcs.xml -p
+	$(CMD) vendor/bin/phpcs --standard=phpcs.xml -p
 
 phpcbf:
-	$(CMD) bin/phpcbf
+	$(CMD) vendor/bin/phpcbf
 
 coverage:
 	@echo "\n==> Generating coverage report"
-	$(CMD) bin/phpunit --coverage-html coverage
+	$(CMD) vendor/bin/phpunit --coverage-html coverage
 
 tests:
 	@echo "\n==> Running tests"
-	$(CMD) bin/phpunit
+	$(CMD) vendor/bin/phpunit
 
 stan:
 	@echo "\n==> Running stan for analysis"
-	$(CMD) bin/phpstan analyse --memory-limit=-1 src
+	$(CMD) vendor/bin/phpstan analyse --memory-limit=-1 src
 
 container-stop:
 	@echo "\n==> Stopping docker container"
