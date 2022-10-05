@@ -1,32 +1,72 @@
 COMPOSER ?= composer
-PROJECT = "Tic-Tac-Toe"
+DOCKER_COMPOSE = docker-compose
+PROJECT = "TicTacToe."
+COMPOSE_PROJECT_NAME ?= $(notdir $(shell pwd))
+PHP_SERVICE = php
+PHP_CMD = php
 
-all: clear lint-composer lint-php composer phpcs test coverage
+ifeq ($(RUNNER), travis)
+	CMD :=
+else
+	CMD := docker-compose exec $(PHP_SERVICE)
+endif
+
+all: container-up clear composer lint-composer lint-php  phpcs tests
 
 lint-composer:
 	@echo "\n==> Validating composer.json and composer.lock:"
-	$(COMPOSER) validate --strict
+	$(CMD) $(COMPOSER) validate --strict
 
 lint-php:
 	@echo "\n==> Validating all php files:"
-	@find src -type f -name \*.php | while read file; do php -l "$$file" || exit 1; done
+	$(CMD) find src tests -type f -iname '*php' -exec $(PHP_CMD) -l {} \;
 
 composer:
-	$(COMPOSER) install
+	@echo "\n==> Running composer install, runner $(RUNNER)"
+	$(CMD) $(COMPOSER) install
+
+lint: lint-composer lint-php
 
 clear:
-	rm -rf vendor
+	$(CMD) rm -rf vendor
+	$(CMD) rm -rf bin/php*
 
 phpcs:
-	php vendor/bin/phpcs . -np
+	@echo "\n==> Checking style guidelines"
+	$(CMD) bin/phpcs --standard=phpcs.xml -p
 
 phpcbf:
-	vendor/bin/phpcbf src/*
-
-test:
-	vendor/bin/phpunit
+	$(CMD) bin/phpcbf
 
 coverage:
-	vendor/bin/phpunit --coverage-html coverage
+	@echo "\n==> Generating coverage report"
+	$(CMD) bin/phpunit --coverage-html coverage
 
-.PHONY: lint-php lint-composer phpcs phpcbf test coverage composer clear
+tests:
+	@echo "\n==> Running tests"
+	$(CMD) bin/phpunit
+
+stan:
+	@echo "\n==> Running stan for analysis"
+	$(CMD) bin/phpstan analyse --memory-limit=-1 src
+
+container-stop:
+	@echo "\n==> Stopping docker container"
+	$(DOCKER_COMPOSE) stop
+
+container-down:
+	@echo "\n==> Removing docker container"
+	$(DOCKER_COMPOSE) down
+
+container-remove:
+	@echo "\n==> Removing docker container(s)"
+	$(DOCKER_COMPOSE) rm
+
+container-up:
+	@echo "\n==> Docker container building and starting ..."
+	$(DOCKER_COMPOSE) up --build -d
+
+tear-down: clear container-stop container-down container-remove
+
+
+.PHONY: lint-php lint-composer phpcs phpcbf composer clear tests coverage container-up container-stop container-down container-remove

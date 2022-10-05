@@ -1,0 +1,11 @@
+version: '3.7'
+
+services:
+  php:
+    build: docker/php-cli
+    tty: true
+    working_dir: /code
+    restart: on-failure
+    volumes:
+      - ./:/code
+      - ./docker/php-cli/php.ini:/usr/local/etc/php/php.ini:ro
