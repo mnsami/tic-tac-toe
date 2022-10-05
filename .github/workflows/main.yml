@@ -71,8 +71,5 @@ jobs:
       - name: Check PHP styles
         run: make phpcs
 
-      - name: Static Analysis
-        run: make stan
-
       - name: Unit Tests
         run: make tests
