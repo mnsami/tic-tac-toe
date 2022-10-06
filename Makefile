@@ -46,6 +46,9 @@ tests:
 	@echo "\n==> Running tests"
 	$(CMD) vendor/bin/phpunit
 
+play:
+	$(CMD) $(PHP_CMD) main.php
+
 stan:
 	@echo "\n==> Running stan for analysis"
 	$(CMD) vendor/bin/phpstan analyse --memory-limit=-1 src

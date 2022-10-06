@@ -18,7 +18,7 @@ Run `make all` will do all the magic for you.
 
 ### Start playing
 
-To start playing the game, you need to run `php main.php`
+To start playing the game, you need to run `make play`
 
 ### Unit tests
 
